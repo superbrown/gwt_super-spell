@@ -1,0 +1,379 @@
+/** Add css rules here for your application. */
+
+
+div.gwt-Hyperlink:hover {
+    cursor: pointer;
+}
+
+a {
+    color: #C9C9C9;
+}
+
+a:link {
+    color: #C9C9C9;
+}
+
+a:visited {
+    color: #C9C9C9;
+}
+
+a:hover {
+    color: #C9C9C9;
+}
+
+a:active {
+    color: #C9C9C9;
+}
+
+
+.centerAlign {
+    margin-left: auto;
+    margin-right: auto;
+    horizontal-align: center;
+}
+
+.centerOfBoxAlign {
+    vertical-align: middle;
+    horizontal-align: center;
+}
+
+
+
+.sendButton {
+  display: block;
+  font-size: 16pt;
+}
+
+/** Most GWT widgets already have a style name defined */
+.gwt-DialogBox {
+  width: 400px;
+}
+
+.dialogVPanel {
+  margin: 5px;
+}
+
+.serverResponseLabelError {
+  color: red;
+}
+
+.highlight {
+    background-color: #C7CB34;
+    color: black;
+}
+
+.vAlignTop {
+  vertical-align:text-top;
+}
+
+
+
+.topMargin10 {
+  margin-top: 10px;
+}
+
+.leftMargin10 {
+  margin-left: 10px;
+}
+
+.rightMargin10 {
+  margin-right: 10px;
+}
+
+.rightMargin5 {
+  margin-right: 5px;
+}
+
+.bottomMargin {
+  margin-bottom: 5px;
+}
+
+.leftMargin50 {
+  margin-left: 50px;
+}
+
+
+
+.italics {
+  font-style:italic;
+}
+
+.courier {
+  font-family: monospace;
+}
+
+
+
+.blink {
+    text-decoration: blink;
+}
+
+
+.bold {
+    font-weight:bold;
+}
+
+
+.fontSize65 {
+    font-size:65%;
+}
+
+
+.fontSize100 {
+    font-size:100%;
+}
+
+.fontSize120 {
+    font-size:120%;
+}
+
+.fontSize130 {
+    font-size:130%;
+}
+
+.fontSize150 {
+    font-size:150%;
+}
+
+.fontSize320 {
+    font-size:320%;
+}
+
+.fontSize600 {
+    font-size:600%;
+}
+
+
+.arielFont {
+    font-family: Sans-serif;
+}
+
+
+
+.chalkBoardColor {
+    background-color: #014F2A;
+}
+
+.pinkChalkBoardColor {
+    background-color: #BC005E;
+}
+
+.blueChalkBoardColor {
+    background-color: #012850;
+}
+
+.purpleChalkBoardColor {
+    background-color: #48235C;
+}
+
+.aquaChalkBoardColor {
+    background-color: #015050;
+}
+
+.brownChalkBoardColor {
+    background-color: #502B01;
+}
+
+.orangeChalkBoardColor {
+    background-color: #BA4400;
+}
+
+.blackChalkBoardColor {
+    background-color: #333333;
+}
+
+.redChalkBoardColor {
+    background-color: #9A001F;
+}
+
+.mastermindBoardColor {
+    background-color: tan;
+}
+
+
+
+.whiteColor {
+    color: #C9C9C9;
+}
+
+.yellowColor {
+    color: #C7CB34;
+}
+
+
+.gwt-Label-whiteChalk {
+    color: #C9C9C9;
+    font-family: crayon_font;
+}
+
+.whiteChalk {
+    color: #C9C9C9;
+    font-family: crayon_font;
+}
+
+.td-whiteChalk {
+    color: #C9C9C9;
+    font-family: crayon_font;
+}
+
+.yellowChalk {
+    color: #C7CB34;
+    font-family: crayon_font;
+}
+
+.blackLetters {
+    color: #000000;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.chalkFont {
+    font-family: crayon_font;
+}
+@font-face
+{
+    font-family: crayon_font;
+    src: url('/fonts/CRAYA___.eot');
+    src: local(crayon_font), url('/fonts/CRAYA___.ttf') format('opentype');
+}
+
+.arialFont {
+    font-family: arial;
+}
+
+.OPN_StunFillaWenkay_font {
+    font-family: OPN_StunFillaWenkay_font;
+}
+@font-face
+{
+    font-family: OPN_StunFillaWenkay_font;
+    src: url('/fonts/OPN_StunFillaWenkay.eot');
+    src: local(OPN_StunFillaWenkay_font), url('/fonts/OPN_StunFillaWenkay.ttf') format('opentype');
+}
+
+.LEFTHAND_font {
+    font-family: LEFTHAND_font;
+}
+@font-face
+{
+    font-family: LEFTHAND_font;
+    src: url('/fonts/LEFTHAND.eot');
+    src: local(LEFTHAND_font), url('/fonts/LEFTHAND.ttf') format('opentype');
+}
+
+
+.CRAZK_font {
+    font-family: CRAZK_font;
+}
+@font-face
+{
+    font-family: CRAZK_font;
+    src: url('/fonts/CRAZK.eot');
+    src: local(OPN_StunFillaWenkay_font), url('/fonts/CRAZK.ttf') format('opentype');
+}
+
+
+.Dawgbox_font {
+    font-family: Dawgbox_font;
+}
+@font-face
+{
+    font-family: Dawgbox_font;
+    src: url('/fonts/Dawgbox.eot');
+    src: local(Dawgbox_font), url('/fonts/Dawgbox.ttf') format('opentype');
+}
+
+
+.hypertension_font {
+    font-family: hypertension_font;
+}
+@font-face
+{
+    font-family: hypertension_font;
+    src: url('/fonts/hypertension.eot');
+    src: local(hypertension_font), url('/fonts/hypertension.ttf') format('opentype');
+}
+
+
+.InsertYourNameHere_font {
+    font-family: InsertYourNameHere_font;
+}
+@font-face
+{
+    font-family: InsertYourNameHere_font;
+    src: url('/fonts/InsertYourNameHere.eot');
+    src: local(InsertYourNameHere_font), url('/fonts/InsertYourNameHere.ttf') format('opentype');
+}
+
+
+.LOOSH_font {
+    font-family: LOOSH_font;
+}
+@font-face
+{
+    font-family: LOOSH_font;
+    src: url('/fonts/LOOSH.eot');
+    src: local(LOOSH_font), url('/fonts/LOOSH.ttf') format('opentype');
+}
+
+
+.mathbook_font {
+    font-family: mathbook_font;
+}
+@font-face
+{
+    font-family: mathbook_font;
+    src: url('/fonts/mathbook.eot');
+    src: local(mathbook_font), url('/fonts/mathbook.ttf') format('opentype');
+}
+
+
+.ScratchedCarPaint_font {
+    font-family: ScratchedCarPaint_font;
+}
+@font-face
+{
+    font-family: ScratchedCarPaint_font;
+    src: url('/fonts/ScratchedCarPaint.eot');
+    src: local(ScratchedCarPaint_font), url('/fonts/ScratchedCarPaint.ttf') format('opentype');
+}
+
+
+BODY, HTML
+{
+    height: 100%;
+}
+
+body
+{
+    color: #C9C9C9;
+    font-family: Sans-serif;
+}
+
+.disabledColor
+{
+    color: #707070;
+}
+
+.busyCursor {
+    cursor:wait;
+}
+
+.defaultCursor {
+    cursor:default;
+}
+
+.blackFont {
+    color: black;
+}
+
+#timedOutSplash {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    margin-left: -100px;
+}
