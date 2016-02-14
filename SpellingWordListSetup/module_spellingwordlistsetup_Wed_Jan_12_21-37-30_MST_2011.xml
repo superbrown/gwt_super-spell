@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_spellingwordlistsetup" default="compile.module.spellingwordlistsetup">
+  <dirname property="module.spellingwordlistsetup.basedir" file="${ant.file.module_spellingwordlistsetup}"/>
+  
+  <property name="module.jdk.home.spellingwordlistsetup" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.spellingwordlistsetup" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.spellingwordlistsetup" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.spellingwordlistsetup" value="${compiler.args}"/>
+  
+  <property name="spellingwordlistsetup.output.dir" value="${module.spellingwordlistsetup.basedir}/../out/production/SpellingWordListSetup"/>
+  <property name="spellingwordlistsetup.testoutput.dir" value="${module.spellingwordlistsetup.basedir}/../out/test/SpellingWordListSetup"/>
+  
+  <path id="spellingwordlistsetup.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="spellingwordlistsetup.module.production.classpath">
+    <path refid="${module.jdk.classpath.spellingwordlistsetup}"/>
+    <pathelement location="${gwtapp.output.dir}"/>
+    <pathelement location="${basedir}/gwtApp/war/WEB-INF/lib/gwt-dnd-3.0.1.jar"/>
+    <path refid="library.gwt-user.classpath"/>
+    <fileset dir="${basedir}/../../appengine-java-sdk-1.3.8">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="spellingwordlistsetup.runtime.production.module.classpath">
+    <pathelement location="${spellingwordlistsetup.output.dir}"/>
+    <path refid="gwtapp.runtime.production.module.classpath"/>
+  </path>
+  
+  <path id="spellingwordlistsetup.module.classpath">
+    <path refid="${module.jdk.classpath.spellingwordlistsetup}"/>
+    <pathelement location="${spellingwordlistsetup.output.dir}"/>
+    <pathelement location="${gwtapp.output.dir}"/>
+    <pathelement location="${basedir}/gwtApp/war/WEB-INF/lib/gwt-dnd-3.0.1.jar"/>
+    <path refid="library.gwt-user.classpath"/>
+    <fileset dir="${basedir}/../../appengine-java-sdk-1.3.8">
+      <patternset refid="library.patterns"/>
+    </fileset>
+  </path>
+  
+  <path id="spellingwordlistsetup.runtime.module.classpath">
+    <pathelement location="${spellingwordlistsetup.output.dir}"/>
+    <pathelement location="${spellingwordlistsetup.testoutput.dir}"/>
+    <path refid="gwtapp.runtime.module.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.spellingwordlistsetup">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.spellingwordlistsetup">
+    <patternset refid="excluded.from.module.spellingwordlistsetup"/>
+  </patternset>
+  
+  <path id="spellingwordlistsetup.module.sourcepath">
+    <dirset dir="${module.spellingwordlistsetup.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.spellingwordlistsetup" depends="compile.module.spellingwordlistsetup.production,compile.module.spellingwordlistsetup.tests" description="Compile module SpellingWordListSetup"/>
+  
+  <target name="compile.module.spellingwordlistsetup.production" depends="compile.module.gwtapp" description="Compile module SpellingWordListSetup; production classes">
+    <mkdir dir="${spellingwordlistsetup.output.dir}"/>
+    <javac2 destdir="${spellingwordlistsetup.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.spellingwordlistsetup}/javac">
+      <compilerarg line="${compiler.args.spellingwordlistsetup}"/>
+      <bootclasspath refid="spellingwordlistsetup.module.bootclasspath"/>
+      <classpath refid="spellingwordlistsetup.module.production.classpath"/>
+      <src refid="spellingwordlistsetup.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.spellingwordlistsetup"/>
+    </javac2>
+    
+    <copy todir="${spellingwordlistsetup.output.dir}">
+      <fileset dir="${module.spellingwordlistsetup.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.spellingwordlistsetup.tests" depends="compile.module.spellingwordlistsetup.production" description="compile module SpellingWordListSetup; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.spellingwordlistsetup" description="cleanup module">
+    <delete dir="${spellingwordlistsetup.output.dir}"/>
+    <delete dir="${spellingwordlistsetup.testoutput.dir}"/>
+  </target>
+</project>
