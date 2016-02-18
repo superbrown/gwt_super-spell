@@ -9,9 +9,9 @@ import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFact;
 public class DivisionMathFactListForAParticularPrimaryOperand
         extends MathFactListForAParticularPrimaryOperand
 {
-    public DivisionMathFactListForAParticularPrimaryOperand(Integer primaryOperand, String optionalTitle, int timeLimit)
+    public DivisionMathFactListForAParticularPrimaryOperand(Integer primaryOperand, String name, int timeLimit)
     {
-        super(primaryOperand, optionalTitle, timeLimit);
+        super(primaryOperand, name, timeLimit);
     }
 
     public DivisionMathFactListForAParticularPrimaryOperand()

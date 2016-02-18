@@ -140,7 +140,7 @@ public class SongPlayerPanel extends VerticalPanel
 
     protected SoundWidget createSongWidget(String fileName)
     {
-        SoundWidget widget = new SoundWidgetUsingObjectTag(fileName, true, true);
+        SoundWidget widget = new SoundWidget_audioTag(fileName, true, true);
         widget.addStyleName("topMargin10");
         return widget;
     }

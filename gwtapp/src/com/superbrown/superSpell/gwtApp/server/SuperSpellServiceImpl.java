@@ -45,8 +45,7 @@ public class SuperSpellServiceImpl extends RemoteServiceServlet implements ISupe
 
         try
         {
-            Set<String> listNames = testableListLibrarian.
-                    getTestableListNames(schoolClassName);
+            Set<String> listNames = testableListLibrarian.getTestableListNames(schoolClassName);
             spellingListNames.addAll(listNames);
             Collections.sort(spellingListNames);
         }

@@ -27,11 +27,11 @@ public abstract class MathFactListForAParticularPrimaryOperand extends TestableI
         if (explicitName != null &&
             !explicitName.equals(""))
         {
-            setName(explicitName);
+            setNane(explicitName);
         }
         else
         {
-            setName("" + primaryOperand + "'s");
+            setNane("" + primaryOperand + "'s");
         }
 
         testables = new ArrayList<ITestable>();

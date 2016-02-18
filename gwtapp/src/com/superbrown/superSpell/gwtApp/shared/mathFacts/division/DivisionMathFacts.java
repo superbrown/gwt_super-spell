@@ -6,9 +6,9 @@ import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFactListForAParticu
 
 public class DivisionMathFacts extends MathFactListForAParticularOperator
 {
-    public DivisionMathFacts(String optionalTitle, int timeLimit)
+    public DivisionMathFacts(String name, int timeLimit)
     {
-        super(optionalTitle, timeLimit);
+        super(name, timeLimit);
     }
 
     public DivisionMathFacts()
@@ -21,8 +21,8 @@ public class DivisionMathFacts extends MathFactListForAParticularOperator
         return Settings.HIGHEST_LEVEL_OF_DIVISION_MATH_FACTS;
     }
 
-    protected MathFactListForAParticularPrimaryOperand createMathFactList(int primaryOperand, int timeLimit, String optionalTitle)
+    protected MathFactListForAParticularPrimaryOperand createMathFactList(int primaryOperand, int timeLimit, String name)
     {
-        return new DivisionMathFactListForAParticularPrimaryOperand(primaryOperand, optionalTitle, timeLimit);
+        return new DivisionMathFactListForAParticularPrimaryOperand(primaryOperand, name, timeLimit);
     }
 }

@@ -3,11 +3,15 @@ package com.superbrown.superSpell.gwtApp.server;
 
 import com.superbrown.superSpell.gwtApp.server.spelling.spellingLists.SpellingListFactory;
 import com.superbrown.superSpell.gwtApp.server.spelling.spellingLists.VocabularySpellingListFactory;
+import com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade3.VocabularyList_SocialStudies_Unit01;
+import com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade3.VocabularyList_WordMaster3;
 import com.superbrown.superSpell.gwtApp.shared.ITestable;
 import com.superbrown.superSpell.gwtApp.shared.mathFacts.addition.AdditionMathFacts;
 import com.superbrown.superSpell.gwtApp.shared.mathFacts.division.DivisionMathFacts;
 import com.superbrown.superSpell.gwtApp.shared.mathFacts.multiplication.MultiplicationMathFacts;
 import com.superbrown.superSpell.gwtApp.shared.mathFacts.subtraction.SubtractionMathFacts;
+import com.superbrown.superSpell.gwtApp.shared.vocabulary.IVocabularyList;
+import com.superbrown.superSpell.gwtApp.shared.vocabulary.VocabularyList;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -46,70 +50,70 @@ public class TestableListLibrarian
     {
         clear();
 
-        add("3rd Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade3.VocabularyList_WordMaster3("WordMaster 3"));
+        add("3rd Grade: Vocabulary", new VocabularyList_WordMaster3("WordMaster 3"));
 
         initMathFacts();
 
 //        add("5th Grade: Science", new VocabularyList_Lesson13("Chapter 15 vocabulary"));
 
-        add("3rd Grade: Social Studies", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade3.VocabularyList_SocialStudies_Unit01("Unit 1 vocabulary"));
+        add("3rd Grade: Social Studies", new VocabularyList_SocialStudies_Unit01("Unit 1 vocabulary"));
 
 //        add("6th Grade: Vocabulary", new VocabularyList_Lesson13("Vocabulary Lesson 13"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson01("Vocabulary Lesson 01"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson02("Vocabulary Lesson 02"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson03("Vocabulary Lesson 03"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson04("Vocabulary Lesson 04"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson05("Vocabulary Lesson 05"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson06("Vocabulary Lesson 06"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson07("Vocabulary Lesson 07"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson08("Vocabulary Lesson 08"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson09("Vocabulary Lesson 09"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson10("Vocabulary Lesson 10"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson11("Vocabulary Lesson 11"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson12("Vocabulary Lesson 12"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson13("Vocabulary Lesson 13"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson14("Vocabulary Lesson 14"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson15("Vocabulary Lesson 15"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson16("Vocabulary Lesson 16"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson17("Vocabulary Lesson 17"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson18("Vocabulary Lesson 18"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson19("Vocabulary Lesson 19"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson20("Vocabulary Lesson 20"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson21("Vocabulary Lesson 21"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson22("Vocabulary Lesson 22"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson23("Vocabulary Lesson 23"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson24("Vocabulary Lesson 24"));
-//        add("6th Grade: Vocabulary", new VocabularyList_Lesson11Through20Review("Vocabulary Lesson 11 through 20"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_WordMasterI("WordMaster 1"));
-        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade6.VocabularyList_WordMasterII("WordMaster 2"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson01("Vocabulary Lesson 01"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson02("Vocabulary Lesson 02"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson03("Vocabulary Lesson 03"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson04("Vocabulary Lesson 04"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson05("Vocabulary Lesson 05"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson06("Vocabulary Lesson 06"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson07("Vocabulary Lesson 07"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson08("Vocabulary Lesson 08"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson09("Vocabulary Lesson 09"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson10("Vocabulary Lesson 10"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson11("Vocabulary Lesson 11"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson12("Vocabulary Lesson 12"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson13("Vocabulary Lesson 13"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson14("Vocabulary Lesson 14"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson15("Vocabulary Lesson 15"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson16("Vocabulary Lesson 16"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson17("Vocabulary Lesson 17"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson18("Vocabulary Lesson 18"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson19("Vocabulary Lesson 19"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson20("Vocabulary Lesson 20"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson21("Vocabulary Lesson 21"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson22("Vocabulary Lesson 22"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson23("Vocabulary Lesson 23"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson24("Vocabulary Lesson 24"));
+//        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson11Through20Review("Vocabulary Lesson 11 through 20"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_WordMasterI("WordMaster 1"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_WordMasterII("WordMaster 2"));
 
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson01("Lesson 01"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson02("Lesson 02"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson03("Lesson 03"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson01Thru03Review("Lessons 01-03 Review"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson04("Lesson 04"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson05("Lesson 05"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson06("Lesson 06"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson04Thru06Review("Lessons 04-06 Review"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson07("Lesson 07"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson08("Lesson 08"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson09("Lesson 09"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson07Thru09Review("Lessons 07-09 Review"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson13("Lesson 13"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson14("Lesson 14"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson15("Lesson 15"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson13Thru15Review("Lessons 13-15 Review"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson16("Lesson 16"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson17("Lesson 17"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson18("Lesson 18"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson16Thru18Review("Lessons 16-18 Review"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson19("Lesson 19"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson20("Lesson 20"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson21("Lesson 21"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson19Thru21Review("Lessons 19-21 Review"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_WordMaster01("Word Master I"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_WordMaster02("Word Master II"));
-        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.shared.vocabulary.vocabularyLists.grade7.VocabularyList_WordMaster03("Word Master III"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson01("Lesson 01"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson02("Lesson 02"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson03("Lesson 03"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson01Thru03Review("Lessons 01-03 Review"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson04("Lesson 04"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson05("Lesson 05"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson06("Lesson 06"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson04Thru06Review("Lessons 04-06 Review"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson07("Lesson 07"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson08("Lesson 08"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson09("Lesson 09"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson07Thru09Review("Lessons 07-09 Review"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson13("Lesson 13"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson14("Lesson 14"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson15("Lesson 15"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson13Thru15Review("Lessons 13-15 Review"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson16("Lesson 16"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson17("Lesson 17"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson18("Lesson 18"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson16Thru18Review("Lessons 16-18 Review"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson19("Lesson 19"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson20("Lesson 20"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson21("Lesson 21"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_Lesson19Thru21Review("Lessons 19-21 Review"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_WordMaster01("Word Master I"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_WordMaster02("Word Master II"));
+        add("7th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade7.VocabularyList_WordMaster03("Word Master III"));
 
         SpellingListFactory spellingListFactory = new SpellingListFactory();
         SpellingListFactory vocabularySpellingListFactory = new VocabularySpellingListFactory();
@@ -187,6 +191,14 @@ public class TestableListLibrarian
         add("Math Facts", new SubtractionMathFacts("Subtraction (" + mathFactTimeLimit + " second time limit)", mathFactTimeLimit));
     }
 
+    public void add(String schoolClassName, IVocabularyList vocabularyList) {
+
+        // We need to make sure the vocabulary list is generic as only the generic class is
+        // "shared," and therefore serializable.
+        VocabularyList genericVocabularyList = new VocabularyList(vocabularyList);
+        add(schoolClassName, (ITestable) genericVocabularyList);
+    }
+
     public void add(String schoolClassName, ITestable testableList)
     {
         String name = testableList.getName();
@@ -198,7 +210,7 @@ public class TestableListLibrarian
             name = name.replaceAll("_", "-");
         }
 
-        testableList.setName(name);
+        testableList.setNane(name);
 
 //        for (SpellingWord spellingWord : spellingList.getSpellingWords())
 //        {

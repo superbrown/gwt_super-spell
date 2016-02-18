@@ -32,7 +32,7 @@ public abstract class MathFactListForAParticularOperator implements Serializable
 
     protected abstract double getHighestLevelToGo();
 
-    protected abstract MathFactListForAParticularPrimaryOperand createMathFactList(int primaryOperand, int timeLimit, String optionalTitle);
+    protected abstract MathFactListForAParticularPrimaryOperand createMathFactList(int primaryOperand, int timeLimit, String name);
 
     public List<MathFactListForAParticularPrimaryOperand> getMathFactLists()
     {
@@ -67,7 +67,7 @@ public abstract class MathFactListForAParticularOperator implements Serializable
         return name;
     }
 
-    public void setName(String name)
+    public void setNane(String name)
     {
         this.name = name;
     }

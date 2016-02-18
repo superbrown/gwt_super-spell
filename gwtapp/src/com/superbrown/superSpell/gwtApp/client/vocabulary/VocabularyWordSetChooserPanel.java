@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.superbrown.superSpell.gwtApp.client.SuperSpell;
 import com.superbrown.superSpell.gwtApp.client.common.IResetable;
-import com.superbrown.superSpell.gwtApp.client.common.audio.SongPlayerPanel_usingMidiJs;
+import com.superbrown.superSpell.gwtApp.client.common.audio.SongPlayerPanel_midi;
 import com.superbrown.superSpell.gwtApp.shared.ITestable;
 import com.superbrown.superSpell.gwtApp.shared.ITestableItem;
 import com.superbrown.superSpell.gwtApp.shared.vocabulary.IVocabularyList;
@@ -69,6 +69,6 @@ public class VocabularyWordSetChooserPanel extends VerticalPanel implements IRes
         label.addStyleName("fontSize150 yellowChalk");
         add(label);
 
-        add(new SongPlayerPanel_usingMidiJs());
+        add(new SongPlayerPanel_midi());
     }
 }

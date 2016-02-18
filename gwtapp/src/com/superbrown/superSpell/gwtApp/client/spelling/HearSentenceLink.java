@@ -5,7 +5,7 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Panel;
 import com.superbrown.superSpell.gwtApp.client.common.audio.SoundWidget;
-import com.superbrown.superSpell.gwtApp.client.common.audio.SoundWidgetUsingObjectTag;
+import com.superbrown.superSpell.gwtApp.client.common.audio.SoundWidget_audioTag;
 import com.superbrown.superSpell.gwtApp.shared.spelling.SpellingWord;
 
 /**
@@ -43,13 +43,7 @@ public class HearSentenceLink extends Hyperlink
                 spellingWord.getFullSentenceWithCorrectSpelling() + " " +
                 spellingWord.getCorrectAnswer() + ". ";
 
-//        soundWidget = new SoundWidgetUsingObjectTag(
-//                GOOGLE_TEXT_TO_SPEECH_SERVICE_URI + textToRead,
-//                false, // not visible
-//                true,  // read immediately
-//                "audio/mpeg");
-
-        soundWidget = new SoundWidgetUsingObjectTag(
+        soundWidget = new SoundWidget_audioTag(
                 GOOGLE_TEXT_TO_SPEECH_SERVICE_URI + textToRead,
                 false,  // not visible
                 true);  // read immediately;

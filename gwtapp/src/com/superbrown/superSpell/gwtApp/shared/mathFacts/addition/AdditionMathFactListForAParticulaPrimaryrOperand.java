@@ -9,9 +9,9 @@ import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFact;
 public class AdditionMathFactListForAParticulaPrimaryrOperand
         extends MathFactListForAParticularPrimaryOperand
 {
-    public AdditionMathFactListForAParticulaPrimaryrOperand(Integer primaryOperand, String optionalTitle, int timeLimit)
+    public AdditionMathFactListForAParticulaPrimaryrOperand(Integer primaryOperand, String name, int timeLimit)
     {
-        super(primaryOperand, optionalTitle, timeLimit);
+        super(primaryOperand, name, timeLimit);
     }
 
     public AdditionMathFactListForAParticulaPrimaryrOperand()
