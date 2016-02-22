@@ -5,8 +5,9 @@ Vocabulary and Math (and provide me an opportunity to learn GWT).
 
 It's deployed here: http://super-spell-ver-hrd.appspot.com
 
-The UI was intentionally designed to look like a classroom chalkboard. (Try cheat code “mastermind” 
-for a simple drag and drop implementation of the old Mastermind peg board game.) 
+The UI was intentionally designed to look like a classroom chalkboard. It has all kinds of fun stuff
+in the settings. Once a level of testing is completed, it allows the kids to play MIDI files of
+songs they're familiar with.
 
 
 I eventually ported the Vocabulary module to Android because it worked well with the platform. It's 
@@ -18,6 +19,7 @@ Things learned (or done) while developing the app:
 - using cookies to store user preferences
 - writing code to identify browser type
 - incorporating drag and drop functionality
+- playing MIDI files in the browser
 - temporarily disabling the Enter key to prevent accidental key entry
 - reading sentences using Google translate (no longer functional due to Google closing it down as a free service)
 - playing sound effects
