@@ -55,7 +55,7 @@ public abstract class TestableItem implements IsSerializable, ITestableItem
         return getCorrectAnswer();
     }
 
-    public void setName(String name)
+    public void setNane(String name)
     {
         // default is to do nothing
     }

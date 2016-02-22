@@ -9,16 +9,27 @@ import java.util.Set;
 
 /**
  */
-public abstract class VocabularyList extends TestableItemList implements IVocabularyList
+public class VocabularyList extends TestableItemList implements IVocabularyList
 {
     public VocabularyList()
     {
         this("");
     }
 
-    public VocabularyList(String optionalTitle)
+    public VocabularyList(IVocabularyList vocabularyList)
     {
-        super(optionalTitle);
+        super(vocabularyList.getName());
+        for (ITestable testable : vocabularyList.getTestables())
+        {
+            VocabularyWord vocabularyWord = (VocabularyWord) testable;
+            vocabularyWord.setIVocabularyList(this);
+            testables.add(vocabularyWord);
+        }
+    }
+
+    public VocabularyList(String name)
+    {
+        super(name);
     }
 
     protected void addVocabularyWordToInventory(String sampleSentence, boolean isAProperNoun)

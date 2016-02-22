@@ -26,9 +26,7 @@ public class SpellingListFactory
 
     public SpellingList createSpellingList(String configFilePath)
     {
-        String spellingListDirectory = "./";
-
-        String filePath = spellingListDirectory + configFilePath;
+        String filePath = configFilePath;
         List<String> lines = getLinesFromFile(filePath);
 
         SpellingList spellingList;
@@ -53,7 +51,7 @@ public class SpellingListFactory
             String[] segments = line.split(DELIMITTER);
             if (segments.length != 2)
             {
-                spellingList.setName(filePath + " [not properly initialized]");
+                spellingList.setNane(filePath + " [not properly initialized]");
                 System.out.println("\nLine in file " + filePath +  " is in an improper format: \n" +
                         line +
                         " \n(This can happen when the phonetic spelling has not yet been added to the file.)");

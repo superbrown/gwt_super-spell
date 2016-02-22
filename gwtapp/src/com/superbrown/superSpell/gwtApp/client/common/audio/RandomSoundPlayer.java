@@ -26,7 +26,7 @@ public class RandomSoundPlayer
         }
 
         String fileName = (String)fileNames.getNextElement();
-        songWidget = new SoundWidgetUsingEmbedTag(fileName, false, true);
+        songWidget = new SoundWidget_audioTag(fileName, false, true);
         parentPanel.add(songWidget);
     }
 }

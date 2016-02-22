@@ -9,9 +9,9 @@
 //        super();
 //    }
 //
-//    public SpellingList_WordLoganMisspells(String optionalTitle)
+//    public SpellingList_WordLoganMisspells(String name)
 //    {
-//        super(optionalTitle);
+//        super(name);
 //    }
 //
 //    public void initialize()

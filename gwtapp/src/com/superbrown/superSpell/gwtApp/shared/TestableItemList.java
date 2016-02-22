@@ -15,7 +15,7 @@ public class TestableItemList implements IsSerializable, ITestableItemList
     public TestableItemList(String name)
     {
         this.name = name;
-        testables = new ArrayList<ITestable>();
+        testables = new ArrayList<>();
     }
 
     public TestableItemList()
@@ -78,7 +78,7 @@ public class TestableItemList implements IsSerializable, ITestableItemList
         }
     }
 
-    public void setName(String name)
+    public void setNane(String name)
     {
         this.name = name;
     }

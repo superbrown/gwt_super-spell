@@ -9,9 +9,9 @@ import com.google.gwt.user.client.Timer;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.superbrown.superSpell.gwtApp.client.common.IResetable;
-import com.superbrown.superSpell.gwtApp.client.common.audio.SongPlayerPanel_usingMidiJs;
+import com.superbrown.superSpell.gwtApp.client.common.audio.SongPlayerPanel_midi;
 import com.superbrown.superSpell.gwtApp.client.common.audio.SoundWidget;
-import com.superbrown.superSpell.gwtApp.client.common.audio.SoundWidgetUsingObjectTag;
+import com.superbrown.superSpell.gwtApp.client.common.audio.SoundWidget_audioTag;
 import com.superbrown.superSpell.gwtApp.client.common.cheat.Cheat;
 import com.superbrown.superSpell.gwtApp.client.common.cheat.CheatCodePopupPanel;
 import com.superbrown.superSpell.gwtApp.client.common.cheat.CheatCodes;
@@ -105,11 +105,12 @@ public class SuperSpell implements EntryPoint, IResetable
 
         mainPanel.clear();
 
+        // DESIGN NOTE: This will go away when the call to addSchoolClassChooserPanel() completes
+        //              (below) because it will clear the main panel.
         Label waitingForTeacherLabel = new Label("waiting for teacher to arrive");
         waitingForTeacherLabel.addStyleName("yellowChalk fontSize150 blink");
         mainPanel.add(waitingForTeacherLabel);
 
-        setBoardColor(Settings.getBoardColor());
         setSoundEffectSet(Settings.getSoundEffectsSet());
 //        setInReadImmediatelyMode(Settings.getInReadImmediatelyMode());
         setChalkboardDoodlingEnabled(Settings.getChalkboardDoodlingEnabled(), true);
@@ -137,7 +138,7 @@ public class SuperSpell implements EntryPoint, IResetable
         else
         {
             // "I Dream of Jeanie" blink sound
-//            mainPanel.add(new SoundWidget("./audioFiles/iDreamOfJeanie/idoj-blink.wav", false, true));
+//            mainPanel.add(new SoundWidget("./audioFiles/iDreamOfJeanie/idoj-blink.mp3", false, true));
 
             if (cheat == Cheat.NO_VALUE_ENTERED)
                 return;
@@ -262,13 +263,13 @@ public class SuperSpell implements EntryPoint, IResetable
         if (soundEffectsSet == SoundPaletteChoice.THREE_STOOOGES)
         {
             activeSoundPalette = soundPalette_ThreeStooges;
-            soundPalletChangeWidget = new SoundWidgetUsingObjectTag("./audioFiles/threeStooges/wowowowo.wav", false, true);
+            soundPalletChangeWidget = new SoundWidget_audioTag("./audioFiles/threeStooges/wowowowo.mp3", false, true);
             rootPanel.add(soundPalletChangeWidget);
         }
         else if (soundEffectsSet == SoundPaletteChoice.GOMER_PYLE)
         {
             activeSoundPalette = soundPalette_GomerPyle;
-            soundPalletChangeWidget = new SoundWidgetUsingObjectTag("./audioFiles/gomerPyle/gomer_golly.wav", false, true);
+            soundPalletChangeWidget = new SoundWidget_audioTag("./audioFiles/gomerPyle/gomer_golly.mp3", false, true);
             rootPanel.add(soundPalletChangeWidget);
         }
         else if (soundEffectsSet == SoundPaletteChoice.NONE)
@@ -502,7 +503,7 @@ public class SuperSpell implements EntryPoint, IResetable
         horizontalPanel.add(cheatCodeLink);
 
         HTML cheatCodeCheatSheetLink = new HTML(
-                "<a href='cheats' target='_blank' style='padding-left: 4px'>cheat sheet</a>");
+                "<a href='cheats/index.html' target='_blank' style='padding-left: 4px'>cheat sheet</a>");
         horizontalPanel.add(cheatCodeCheatSheetLink);
 
         return horizontalPanel;
@@ -560,7 +561,7 @@ public class SuperSpell implements EntryPoint, IResetable
         }
         else
         {
-            mainPanel.add(new SongPlayerPanel_usingMidiJs());
+            mainPanel.add(new SongPlayerPanel_midi());
         }
     }
 

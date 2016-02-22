@@ -98,8 +98,13 @@ public class VocabularyWord extends TestableItem implements ThingWithPoolOfIncor
         return isAProperNoun;
     }
 
-    public boolean wordIsAtTheBeginningOfTheTestQuestion()
-    {
-        return this.getTestQuestion().startsWith("__");
-    }
+    public com.superbrown.superSpell.gwtApp.shared.vocabulary.IVocabularyList getIVocabularyList() { return IVocabularyList; }
+
+    public void setIVocabularyList(com.superbrown.superSpell.gwtApp.shared.vocabulary.IVocabularyList IVocabularyList) { this.IVocabularyList = IVocabularyList; }
+
+    public void setTestQuestion(String testQuestion) { this.testQuestion = testQuestion; }
+
+    public void setAProperNoun(boolean AProperNoun) { isAProperNoun = AProperNoun; }
+
+    public boolean wordIsAtTheBeginningOfTheTestQuestion() { return this.getTestQuestion().startsWith("__"); }
 }

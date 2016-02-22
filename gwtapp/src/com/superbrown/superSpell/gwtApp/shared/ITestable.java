@@ -12,5 +12,5 @@ public interface ITestable extends IsSerializable
 
     String getName();
 
-    void setName(String name);
+    void setNane(String name);
 }

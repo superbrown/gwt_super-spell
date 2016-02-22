@@ -10,7 +10,7 @@ import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.superbrown.superSpell.gwtApp.client.SuperSpell;
 import com.superbrown.superSpell.gwtApp.client.common.IResetable;
-import com.superbrown.superSpell.gwtApp.client.common.audio.SongPlayerPanel_usingMidiJs;
+import com.superbrown.superSpell.gwtApp.client.common.audio.SongPlayerPanel_midi;
 import com.superbrown.superSpell.gwtApp.client.util.UiUtilities;
 import com.superbrown.superSpell.gwtApp.shared.ITestable;
 import com.superbrown.superSpell.gwtApp.shared.ITestableItem;
@@ -130,7 +130,7 @@ public class SpellingWordSetChooserPanel extends VerticalPanel implements IReset
         label.addStyleName("fontSize150 yellowChalk");
         verticalPanel.add(label);
 
-        verticalPanel.add(new SongPlayerPanel_usingMidiJs());
+        verticalPanel.add(new SongPlayerPanel_midi());
 
         add(verticalPanel);
     }

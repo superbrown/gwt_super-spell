@@ -17,9 +17,9 @@ public abstract class VocabularyList_ver2 extends TestableItemList implements IV
         this("");
     }
 
-    public VocabularyList_ver2(String optionalTitle)
+    public VocabularyList_ver2(String name)
     {
-        super(optionalTitle);
+        super(name);
     }
 
     protected abstract List<String> getWords();
