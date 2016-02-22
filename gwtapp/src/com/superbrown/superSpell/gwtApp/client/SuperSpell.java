@@ -138,7 +138,7 @@ public class SuperSpell implements EntryPoint, IResetable
         else
         {
             // "I Dream of Jeanie" blink sound
-//            mainPanel.add(new SoundWidget("./audioFiles/iDreamOfJeanie/idoj-blink.wav", false, true));
+//            mainPanel.add(new SoundWidget("./audioFiles/iDreamOfJeanie/idoj-blink.mp3", false, true));
 
             if (cheat == Cheat.NO_VALUE_ENTERED)
                 return;
@@ -263,13 +263,13 @@ public class SuperSpell implements EntryPoint, IResetable
         if (soundEffectsSet == SoundPaletteChoice.THREE_STOOOGES)
         {
             activeSoundPalette = soundPalette_ThreeStooges;
-            soundPalletChangeWidget = new SoundWidget_audioTag("./audioFiles/threeStooges/wowowowo.wav", false, true);
+            soundPalletChangeWidget = new SoundWidget_audioTag("./audioFiles/threeStooges/wowowowo.mp3", false, true);
             rootPanel.add(soundPalletChangeWidget);
         }
         else if (soundEffectsSet == SoundPaletteChoice.GOMER_PYLE)
         {
             activeSoundPalette = soundPalette_GomerPyle;
-            soundPalletChangeWidget = new SoundWidget_audioTag("./audioFiles/gomerPyle/gomer_golly.wav", false, true);
+            soundPalletChangeWidget = new SoundWidget_audioTag("./audioFiles/gomerPyle/gomer_golly.mp3", false, true);
             rootPanel.add(soundPalletChangeWidget);
         }
         else if (soundEffectsSet == SoundPaletteChoice.NONE)
@@ -503,7 +503,7 @@ public class SuperSpell implements EntryPoint, IResetable
         horizontalPanel.add(cheatCodeLink);
 
         HTML cheatCodeCheatSheetLink = new HTML(
-                "<a href='cheats' target='_blank' style='padding-left: 4px'>cheat sheet</a>");
+                "<a href='cheats/index.html' target='_blank' style='padding-left: 4px'>cheat sheet</a>");
         horizontalPanel.add(cheatCodeCheatSheetLink);
 
         return horizontalPanel;
