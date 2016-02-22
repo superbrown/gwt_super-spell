@@ -1,7 +1,8 @@
 # gwt_super-spell
 
 Elementary school educational software I developed in 2010 and 2011 to help my kids study Spelling,
-Vocabulary and Math (and provide me an opportunity to learn GWT).
+Vocabulary and Math, as well as provide me an opportunity to learn GWT.  I did learn GWT, but best
+of all, the software was actually very effective at improving the kids' grades!
 
 It's deployed here: http://super-spell-ver-hrd.appspot.com
 
