@@ -7,9 +7,9 @@ fact drills to be particularly effective.)
 
 It's deployed here: http://super-spell-ver-hrd.appspot.com
 
-The UI was intentionally designed to look like a classroom chalkboard. It has all kinds of fun stuff
-in the settings. Once a level of testing is completed, it allows the kids to play MIDI files of
-songs they're familiar with.
+The UI was intentionally designed to look like a classroom chalkboard. It has some fun stuff in the
+settings. Once a level of testing is completed, it allows the kids to play MIDI files of songs
+they're familiar with.
 
 
 I eventually ported the Vocabulary module to Android because it worked well with the platform. It's 
