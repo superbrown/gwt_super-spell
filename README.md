@@ -13,8 +13,8 @@ songs they're familiar with.
 
 
 I eventually ported the Vocabulary module to Android because it worked well with the platform. It's 
-available for free at Google Play:
-https://play.google.com/store/apps/details?id=com.superbrown.superspell.android.vocabBlaster.client.ver2&hl=en 
+available for free at the Play store:
+https://play.google.com/store/apps/details?id=com.superbrown.vocabBlaster 
 
 
 Things learned (or done) while developing the app: 
