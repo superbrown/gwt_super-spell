@@ -12,7 +12,7 @@ settings. Once a level of testing is completed, it allows the kids to play MIDI 
 they're familiar with.
 
 
-I eventually ported the Vocabulary portion of it to Android because it worked well with the platform. 
+I eventually ported the Vocabulary portion of it to Android so the kids could study in the car.
 It's available for free at the Play Store:
 https://play.google.com/store/apps/details?id=com.superbrown.vocabBlaster 
 
