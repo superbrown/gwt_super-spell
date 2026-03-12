@@ -23,13 +23,7 @@ public class HearSentenceLink extends Hyperlink
     {
         this.spellingWord = spellingWord;
 
-        addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent clickEvent)
-            {
-                readNow();
-            }
-        });
+        addDomHandler(clickEvent -> readNow(), ClickEvent.getType());
     }
 
     public void readNow()

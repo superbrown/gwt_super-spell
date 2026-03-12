@@ -481,24 +481,14 @@ public class SuperSpell implements EntryPoint, IResetable
         final Hyperlink cheatCodeLink = new Hyperlink();
         cheatCodeLink.setText("enter cheat code");
         cheatCodeLink.addStyleName("underline");
-        cheatCodeLink.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent clickEvent)
-            {
-                final CheatCodePopupPanel panel = new CheatCodePopupPanel();
-                panel.setPopupPosition(
-                        linksInUpperRightCornerPanel.getAbsoluteLeft(),
-                        linksInUpperRightCornerPanel.getAbsoluteTop() + 10);
-                panel.show();
-                panel.addCloseHandler(new CloseHandler()
-                {
-                    public void onClose(CloseEvent closeEvent)
-                    {
-                        handleCheatCodeDialogClosure(panel);
-                    }
-                });
-            }
-        });
+        cheatCodeLink.addDomHandler(clickEvent -> {
+            final CheatCodePopupPanel panel = new CheatCodePopupPanel();
+            panel.setPopupPosition(
+                    linksInUpperRightCornerPanel.getAbsoluteLeft(),
+                    linksInUpperRightCornerPanel.getAbsoluteTop() + 10);
+            panel.show();
+            panel.addCloseHandler(closeEvent -> handleCheatCodeDialogClosure(panel));
+        }, ClickEvent.getType());
 
         horizontalPanel.add(cheatCodeLink);
 
@@ -514,17 +504,13 @@ public class SuperSpell implements EntryPoint, IResetable
         final Hyperlink cheatCodeLink = new Hyperlink();
         cheatCodeLink.setText("settings");
         cheatCodeLink.addStyleName("underline");
-        cheatCodeLink.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent clickEvent)
-            {
-                final SettingsPopupPanel panel = new SettingsPopupPanel();
-                panel.setPopupPosition(
-                        linksInUpperRightCornerPanel.getAbsoluteLeft() - panel.getOffsetWidth() + linksInUpperRightCornerPanel.getOffsetWidth(),
-                        linksInUpperRightCornerPanel.getAbsoluteTop());
-                panel.show();
-            }
-        });
+        cheatCodeLink.addDomHandler(clickEvent -> {
+            final SettingsPopupPanel panel = new SettingsPopupPanel();
+            panel.setPopupPosition(
+                    linksInUpperRightCornerPanel.getAbsoluteLeft() - panel.getOffsetWidth() + linksInUpperRightCornerPanel.getOffsetWidth(),
+                    linksInUpperRightCornerPanel.getAbsoluteTop());
+            panel.show();
+        }, ClickEvent.getType());
 
         return cheatCodeLink;
     }
@@ -534,13 +520,7 @@ public class SuperSpell implements EntryPoint, IResetable
         final Hyperlink cheatCodeLink = new Hyperlink();
         cheatCodeLink.setText("start over");
         cheatCodeLink.addStyleName("underline");
-        cheatCodeLink.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent clickEvent)
-            {
-                init();
-            }
-        });
+        cheatCodeLink.addDomHandler(clickEvent -> init(), ClickEvent.getType());
 
         return cheatCodeLink;
     }
