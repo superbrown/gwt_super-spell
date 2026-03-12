@@ -1,66 +1,59 @@
 package com.superbrown.superSpell.gwtApp.client.spelling;
 
 import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Hyperlink;
-import com.google.gwt.user.client.ui.Panel;
-import com.superbrown.superSpell.gwtApp.client.common.audio.SoundWidget;
-import com.superbrown.superSpell.gwtApp.client.common.audio.SoundWidget_audioTag;
 import com.superbrown.superSpell.gwtApp.shared.spelling.SpellingWord;
 
 /**
+ * Link that uses the Web Speech API to read spelling words and sentences aloud.
+ * Replaces the deprecated Google Translate TTS service.
  */
 public class HearSentenceLink extends Hyperlink
 {
-    public static final String GOOGLE_TEXT_TO_SPEECH_SERVICE_URI =
-        "http://translate.google.com/translate_tts?tl=en&q=";
-
-    private static SoundWidget soundWidget;
     private SpellingWord spellingWord;
-
 
     public HearSentenceLink(final SpellingWord spellingWord)
     {
         this.spellingWord = spellingWord;
-
         addDomHandler(clickEvent -> readNow(), ClickEvent.getType());
     }
 
     public void readNow()
     {
-        removeSoundWidgetIfItExists();
-
         // Read the word, the sentence, and then the word again.
-
         String textToRead =
                 spellingWord.getCorrectAnswer() + ". " +
                 spellingWord.getFullSentenceWithCorrectSpelling() + " " +
                 spellingWord.getCorrectAnswer() + ". ";
 
-        soundWidget = new SoundWidget_audioTag(
-                GOOGLE_TEXT_TO_SPEECH_SERVICE_URI + textToRead,
-                false,  // not visible
-                true);  // read immediately;
-
-        // NOTE: This used Google translate to read the sentences. However, the Google service it
-        // used is no longer available, and the REST service Google now makes available is not free.
-        // Therefore, this feature has been disabled (by commenting it out below).
-
-//        ((Panel)this.getParent()).add(soundWidget);
+        speakText(textToRead);
     }
 
-    protected void onDetach()
-    {
-        super.onDetach();
-        removeSoundWidgetIfItExists();
-    }
-
-    private void removeSoundWidgetIfItExists()
-    {
-        if (soundWidget != null)
-        {
-            ((Panel)this.getParent()).remove(soundWidget);
-            soundWidget = null;
+    /**
+     * Uses the browser's Web Speech API to speak the given text.
+     * This is a free, built-in browser feature that works offline.
+     */
+    private native void speakText(String text) /*-{
+        // Check if the browser supports the Web Speech API
+        if (!$wnd.speechSynthesis) {
+            console.error('Web Speech API not supported in this browser');
+            alert('Text-to-speech is not supported in your browser. Please try Chrome, Firefox, Safari, or Edge.');
+            return;
         }
-    }
+
+        // Cancel any ongoing speech
+        $wnd.speechSynthesis.cancel();
+
+        // Create a new speech utterance
+        var utterance = new SpeechSynthesisUtterance(text);
+        
+        // Configure speech parameters
+        utterance.lang = 'en-US';  // English (US)
+        utterance.rate = 0.9;      // Slightly slower for clarity (0.1 to 10)
+        utterance.pitch = 1.0;     // Normal pitch (0 to 2)
+        utterance.volume = 1.0;    // Full volume (0 to 1)
+
+        // Speak the text
+        $wnd.speechSynthesis.speak(utterance);
+    }-*/;
 }
