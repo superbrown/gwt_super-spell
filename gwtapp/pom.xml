@@ -79,7 +79,8 @@
                     <classpathScope>compile</classpathScope>
                     <style>OBFUSCATED</style>
                     <logLevel>INFO</logLevel>
-                    <sourceLevel>11</sourceLevel>
+                    <!-- GWT 2.10.0 only supports up to Java 11 -->
+                    <sourceLevel>1.11</sourceLevel>
                 </configuration>
                 <executions>
                     <execution>
