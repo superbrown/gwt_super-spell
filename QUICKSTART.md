@@ -26,11 +26,17 @@ Your GWT application has been successfully modernized with Maven!
 ```bash
 # From project root: /Users/P3221839/Projects/gwt_super-spell/
 
-# Build everything
+# Build everything (Java only)
 mvn clean install
+
+# Build with GWT compilation (Java → JavaScript)
+mvn clean package
 
 # Build only the GWT app
 mvn clean install -pl gwtapp
+
+# Compile GWT to JavaScript
+mvn gwt:compile -pl gwtapp
 
 # Build only the setup utilities
 mvn clean install -pl SpellingWordListSetup
@@ -38,6 +44,22 @@ mvn clean install -pl SpellingWordListSetup
 # Compile without running tests
 mvn clean compile
 ```
+
+## GWT Compilation
+
+✅ **GWT Maven Plugin is configured!**
+
+Your Java code can now be compiled to JavaScript for the browser:
+
+```bash
+# Compile Java → JavaScript
+cd gwtapp
+mvn gwt:compile
+
+# Output: gwtapp/target/gwt-app-1.0.0/gwtapp/*.js
+```
+
+See [GWT_MAVEN_PLUGIN.md](GWT_MAVEN_PLUGIN.md) for detailed usage.
 
 ## Project Structure
 

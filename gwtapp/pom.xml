@@ -26,6 +26,14 @@
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
         </dependency>
+        
+        <!-- GWT Dev (for development mode) -->
+        <dependency>
+            <groupId>com.google.gwt</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.allen-sauer.gwt.dnd</groupId>
@@ -44,7 +52,45 @@
     <build>
         <sourceDirectory>src</sourceDirectory>
         <outputDirectory>war/WEB-INF/classes</outputDirectory>
+        
+        <!-- Include source files as resources for GWT compilation -->
+        <resources>
+            <resource>
+                <directory>src</directory>
+                <includes>
+                    <include>**/*.java</include>
+                    <include>**/*.gwt.xml</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+        
         <plugins>
+            <!-- GWT Maven Plugin -->
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>1.0.1</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <moduleName>com.superbrown.superSpell.gwtApp.GwtApp</moduleName>
+                    <moduleShortName>gwtapp</moduleShortName>
+                    <warDir>${project.basedir}/war</warDir>
+                    <classpathScope>compile</classpathScope>
+                    <style>OBFUSCATED</style>
+                    <logLevel>INFO</logLevel>
+                    <sourceLevel>11</sourceLevel>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- Maven WAR Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
