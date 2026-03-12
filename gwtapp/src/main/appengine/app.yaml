@@ -1,0 +1,36 @@
+# Modern App Engine Standard Environment Configuration
+# This file works alongside appengine-web.xml for Java 11 runtime
+
+runtime: java11
+
+# Automatic scaling configuration
+automatic_scaling:
+  min_instances: 0
+  max_instances: 10
+  target_cpu_utilization: 0.6
+
+# Environment variables
+env_variables:
+  # Enable modern Java features
+  JAVA_TOOL_OPTIONS: "-XX:+UseG1GC -XX:+UseStringDeduplication"
+
+# Health check configuration
+readiness_check:
+  path: "/"
+  check_interval_sec: 5
+  timeout_sec: 4
+  failure_threshold: 2
+  success_threshold: 2
+
+liveness_check:
+  path: "/"
+  check_interval_sec: 30
+  timeout_sec: 4
+  failure_threshold: 4
+  success_threshold: 2
+
+# Resource limits
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
