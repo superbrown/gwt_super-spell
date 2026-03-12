@@ -533,7 +533,7 @@ public class Settings
     public static void setSoundEffectsSet(SoundPaletteChoice soundEffectsSet)
     {
         Settings.soundEffectsSet = soundEffectsSet;
-        Cookies.setCookie(SOUND_EFFECTS_SET, soundEffectsSet.toString());
+        setValueInCookie(SOUND_EFFECTS_SET, soundEffectsSet.toString());
     }
 
     public static Boolean getInShowAllMisspellingsMode()
@@ -657,6 +657,39 @@ public class Settings
 
     private static void setValueInCookie(String name, String value)
     {
-        Cookies.setCookie(name, value, ONE_HUNDRED_YEARS_FROM_NOW);
+        setCookieWithSameSite(name, value, ONE_HUNDRED_YEARS_FROM_NOW);
     }
+    
+    /**
+     * Sets a cookie with modern SameSite attribute for browser compatibility.
+     * Uses native JavaScript to set cookies with SameSite=Lax and Secure attributes.
+     */
+    private static native void setCookieWithSameSite(String name, String value, Date expires) /*-{
+        try {
+            // Format expiration date
+            var expiresStr = expires.toUTCString();
+            
+            // Determine if we're on HTTPS (for Secure flag)
+            var isSecure = $wnd.location.protocol === 'https:';
+            
+            // Build cookie string with modern attributes
+            var cookieString = name + "=" + encodeURIComponent(value) + 
+                             "; expires=" + expiresStr + 
+                             "; path=/" +
+                             "; SameSite=Lax";
+            
+            // Add Secure flag if on HTTPS
+            if (isSecure) {
+                cookieString += "; Secure";
+            }
+            
+            // Set the cookie
+            $doc.cookie = cookieString;
+            
+        } catch (e) {
+            // Fallback to GWT's default cookie setting if native method fails
+            console.warn('Failed to set cookie with SameSite attribute, falling back to default:', e);
+            @com.google.gwt.user.client.Cookies::setCookie(Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;)(name, value, expires);
+        }
+    }-*/;
 }

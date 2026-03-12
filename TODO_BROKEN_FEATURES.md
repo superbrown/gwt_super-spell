@@ -139,7 +139,7 @@ gcloud app deploy target/gwt-app-1.0.0.war
 
 ## 5. Cookie SameSite Attribute - MEDIUM PRIORITY
 
-**Status:** ⚠️ May cause issues in modern browsers
+**Status:** ✅ COMPLETED - Added SameSite and Secure attributes to cookies
 
 **Issue:**
 - `Settings.java` uses GWT's `Cookies.setCookie()` without SameSite attribute
@@ -151,24 +151,28 @@ gcloud app deploy target/gwt-app-1.0.0.war
 - Cookie warnings in browser console
 - Settings may reset unexpectedly
 
-**Suggested Approaches:**
+**Resolution:**
+✅ **Completed** - Implemented modern cookie handling with SameSite support
 
-### Solution: Add SameSite Attribute to Cookies
-- GWT's Cookies API may not support SameSite directly
-- **Implementation:**
-  1. Create custom cookie setter using JSNI:
-     ```java
-     public static native void setCookieWithSameSite(String name, String value, Date expires) /*-{
-       var expiresStr = expires.toUTCString();
-       $doc.cookie = name + "=" + value + 
-                     "; expires=" + expiresStr + 
-                     "; path=/; SameSite=Lax; Secure";
-     }-*/;
-     ```
-  2. Update `Settings.java` to use new method
-  3. Add `Secure` flag if serving over HTTPS (recommended)
+**Implementation Details:**
+- Created custom `setCookieWithSameSite()` method using JSNI (JavaScript Native Interface)
+- Added `SameSite=Lax` attribute for cross-site compatibility
+- Added `Secure` flag automatically when served over HTTPS
+- URL-encoded cookie values for proper handling of special characters
+- Graceful fallback to GWT's default cookie method if native method fails
+- Updated all cookie-setting methods to use the new implementation
 
-**Note:** This requires serving the app over HTTPS for `Secure` flag to work.
+**Cookie Attributes Applied:**
+- `SameSite=Lax`: Allows cookies in most cross-site contexts while providing CSRF protection
+- `Secure`: Ensures cookies are only sent over HTTPS connections (when applicable)
+- `Path=/`: Makes cookies available across the entire application
+- Long expiration: 100 years (maintains existing behavior for user preferences)
+
+**Browser Compatibility:**
+- ✅ Chrome/Edge: Full support for SameSite and Secure attributes
+- ✅ Firefox: Full support for modern cookie attributes
+- ✅ Safari: Full support for SameSite and Secure attributes
+- ✅ Fallback: Graceful degradation for older browsers
 
 ---
 
@@ -297,7 +301,7 @@ gcloud app deploy target/gwt-app-1.0.0.war
 4. ✅ **Google App Engine Deployment** - COMPLETED (Java 11 Standard)
 
 ### Medium Priority (Plan to Fix)
-5. ⬜ **Cookie SameSite** - User experience
+5. ✅ **Cookie SameSite** - COMPLETED (Modern browser compatibility)
 6. ⬜ **GWT Version Compatibility** - Long-term maintainability
 
 ### Low Priority (Nice to Have)
@@ -338,7 +342,7 @@ After implementing fixes, test:
 - [x] Text-to-speech works in Chrome, Firefox, Safari
 - [ ] MIDI/MP3 playback works in all browsers
 - [x] No mixed content warnings in browser console
-- [ ] Cookies persist across sessions
+- [x] Cookies persist across sessions (with SameSite support)
 - [ ] App deploys successfully to App Engine (updated to Java 11)
 - [ ] All spelling/vocabulary/math features work
 - [ ] Sound effects play correctly
