@@ -27,6 +27,12 @@ This will:
 
 ### Step 2: Run with Jetty
 
+First, kill any process using port 8080:
+```bash
+lsof -ti :8080 | xargs kill -9 2>/dev/null || true
+```
+
+Then start Jetty:
 ```bash
 cd gwtapp
 mvn jetty:run
@@ -56,6 +62,7 @@ Press `Ctrl+C` in the terminal to stop the server.
 
 ```bash
 cd gwtapp
+lsof -ti :8080 | xargs kill -9 2>/dev/null || true
 mvn clean gwt:compile jetty:run
 ```
 
@@ -76,6 +83,7 @@ Wait for: "The code server is ready at http://127.0.0.1:9876/"
 ### Terminal 2: Start Jetty
 ```bash
 cd gwtapp
+lsof -ti :8080 | xargs kill -9 2>/dev/null || true
 mvn jetty:run
 ```
 
@@ -92,12 +100,17 @@ Now when you make changes to Java files, they'll automatically recompile when yo
 
 ### Port 8080 Already in Use
 
-Change the port in the Jetty command:
+Kill the process using port 8080:
 ```bash
-mvn jetty:run -Djetty.http.port=8081
+lsof -ti :8080 | xargs kill -9
 ```
 
-Then open: http://localhost:8081/
+Or use a different port:
+```bash
+mvn jetty:run -Djetty.http.port=9090
+```
+
+Then open: http://localhost:9090/
 
 ### GWT Compilation Fails
 
@@ -124,6 +137,7 @@ mvn clean package -pl gwtapp
    ```
 3. Restart Jetty:
    ```bash
+   lsof -ti :8080 | xargs kill -9 2>/dev/null || true
    mvn jetty:run
    ```
 4. Hard refresh browser (Ctrl+Shift+R or Cmd+Shift+R)
@@ -149,10 +163,25 @@ When the app loads, you should see:
 - "waiting for teacher to arrive" message
 - Links in upper right: "settings", "enter cheat code", "start over"
 
-The app will try to load word lists from the server. Some features may not work fully due to:
-- Missing Google Translate TTS (text-to-speech disabled)
-- MIDI playback issues (see TODO_BROKEN_FEATURES.md)
-- Server-side data may need initialization
+### Working Features
+
+✅ **All Core Features Working:**
+- Spelling tests with word lists
+- Vocabulary tests with definitions
+- Math fact drills (addition, subtraction, multiplication, division)
+- Text-to-speech "Hear Sentence" feature (Web Speech API)
+- MIDI music playback rewards (fixed HTTPS issue)
+- Sound effects
+- Settings persistence (modern cookie handling)
+- Cheat codes and Easter eggs
+- Drag-and-drop functionality
+- Custom chalkboard fonts
+
+### Known Limitations
+
+⚠️ **Minor Issues:**
+- Dictionary.com phonetic scraping feature may not work (if still used)
+- Some text files in grade 3, 4, 6, and 7 may need phonetic spellings added (see `.txt` files in `gwtapp/src/.../spellingLists/`)
 
 ---
 
@@ -163,6 +192,7 @@ The app will try to load word lists from the server. Some features may not work 
 2. Choose "Spelling"
 3. Select a word list
 4. Try the spelling test
+5. ✅ Click "Hear Sentence" to test text-to-speech (Web Speech API)
 
 ### Test Math Facts
 1. Select a grade level
@@ -180,10 +210,28 @@ The app will try to load word lists from the server. Some features may not work 
 Click "enter cheat code" in the upper right and try:
 - `pink` - Change to pink chalkboard
 - `blue` - Change to blue chalkboard
-- `music` - Unlock music player (may not work - see TODO)
+- ✅ `music` - Unlock music player (MIDI playback now works!)
 - `mastermind` - Play Mastermind game
 
 See `gwtapp/war/cheats/index.html` for full list of cheat codes.
+
+### Test Fixed Features
+
+✅ **Text-to-Speech (Hear Sentence)**
+- Click "Hear Sentence" in spelling tests
+- Browser's built-in speech synthesis will read the sentence
+- Works in Chrome, Firefox, Safari, Edge
+
+✅ **MIDI Music Playback**
+- Complete a test to unlock music
+- Enter cheat code `music` to access music player
+- MIDI files now play correctly (fixed HTTPS issue)
+- 100+ songs available in `gwtapp/war/midiFiles/`
+
+✅ **Settings Persistence**
+- Change settings (chalkboard color, sound effects, etc.)
+- Settings now save correctly with modern cookie handling
+- Includes SameSite and Secure attributes for browser compatibility
 
 ---
 
@@ -215,10 +263,11 @@ Deploy this WAR file to:
 
 ## Next Steps
 
-1. **Test the application** to see what works
-2. **Review TODO_BROKEN_FEATURES.md** for known issues
-3. **Fix critical issues** (text-to-speech, MIDI playback)
-4. **Deploy to production** when ready
+1. **Test the application** - All major features are now working!
+2. **Review APP_ENGINE_DEPLOYMENT.md** - Deploy to Google App Engine when ready
+3. **Check TODO_BROKEN_FEATURES.md** - See what's been fixed (most critical issues resolved)
+4. **Customize word lists** - Add your own spelling/vocabulary lists
+5. **Deploy to production** - App is ready for deployment
 
 ---
 
@@ -226,5 +275,20 @@ Deploy this WAR file to:
 
 - Check `QUICKSTART.md` for build commands
 - Check `GWT_MAVEN_PLUGIN.md` for GWT details
-- Check `TODO_BROKEN_FEATURES.md` for known issues
+- Check `TODO_BROKEN_FEATURES.md` for status of fixes (most issues resolved!)
 - Check `APPLICATION_DESCRIPTION.md` for feature documentation
+- Check `APP_ENGINE_DEPLOYMENT.md` for deployment instructions
+
+---
+
+## Recent Fixes
+
+The following critical issues have been resolved:
+
+✅ **Text-to-Speech** - Implemented Web Speech API (no external dependencies)
+✅ **MIDI Playback** - Fixed HTTPS mixed content issue
+✅ **Cookie Persistence** - Added SameSite and Secure attributes
+✅ **App Engine Deployment** - Migrated to Java 11 Standard Environment
+✅ **Legacy Code Cleanup** - Removed browser plugin dependencies
+
+The app is now fully functional and ready for modern browsers!

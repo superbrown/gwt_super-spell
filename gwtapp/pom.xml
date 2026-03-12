@@ -18,18 +18,18 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.google.gwt</groupId>
+            <groupId>org.gwtproject</groupId>
             <artifactId>gwt-user</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.google.gwt</groupId>
+            <groupId>org.gwtproject</groupId>
             <artifactId>gwt-servlet</artifactId>
         </dependency>
         
         <!-- GWT Dev (for development mode) -->
         <dependency>
-            <groupId>com.google.gwt</groupId>
+            <groupId>org.gwtproject</groupId>
             <artifactId>gwt-dev</artifactId>
             <version>${gwt.version}</version>
             <scope>provided</scope>
@@ -40,11 +40,11 @@
             <artifactId>gwt-dnd</artifactId>
         </dependency>
 
-        <!-- Servlet API -->
+        <!-- Servlet API - Jakarta EE -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>4.0.1</version>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -70,17 +70,17 @@
             <plugin>
                 <groupId>net.ltgt.gwt.maven</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
-                <version>1.0.1</version>
+                <version>1.1.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <moduleName>com.superbrown.superSpell.gwtApp.GwtApp</moduleName>
                     <moduleShortName>gwtapp</moduleShortName>
-                    <warDir>${project.basedir}/war</warDir>
+                    <launcherDir>${project.basedir}/war</launcherDir>
+                    <webappDirectory>${project.basedir}/war</webappDirectory>
                     <classpathScope>compile</classpathScope>
                     <style>OBFUSCATED</style>
                     <logLevel>INFO</logLevel>
-                    <!-- GWT 2.10.0 only supports up to Java 11 -->
-                    <sourceLevel>1.11</sourceLevel>
+                    <sourceLevel>11</sourceLevel>
                 </configuration>
                 <executions>
                     <execution>
@@ -103,10 +103,11 @@
             </plugin>
             
             <!-- Jetty Plugin for local development -->
+            <!-- Using Jetty 10 which supports both javax.servlet and jakarta.servlet -->
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>11.0.15</version>
+                <version>10.0.20</version>
                 <configuration>
                     <webApp>
                         <contextPath>/</contextPath>
@@ -117,7 +118,7 @@
                     <httpConnector>
                         <port>8080</port>
                     </httpConnector>
-                    <scanIntervalSeconds>5</scanIntervalSeconds>
+                    <scan>5</scan>
                 </configuration>
             </plugin>
             

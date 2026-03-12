@@ -21,28 +21,28 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <gwt.version>2.10.0</gwt.version>
+        <gwt.version>2.12.1</gwt.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
             <!-- GWT User -->
             <dependency>
-                <groupId>com.google.gwt</groupId>
+                <groupId>org.gwtproject</groupId>
                 <artifactId>gwt-user</artifactId>
                 <version>${gwt.version}</version>
             </dependency>
 
             <!-- GWT Servlet -->
             <dependency>
-                <groupId>com.google.gwt</groupId>
+                <groupId>org.gwtproject</groupId>
                 <artifactId>gwt-servlet</artifactId>
                 <version>${gwt.version}</version>
             </dependency>
             
             <!-- GWT Dev -->
             <dependency>
-                <groupId>com.google.gwt</groupId>
+                <groupId>org.gwtproject</groupId>
                 <artifactId>gwt-dev</artifactId>
                 <version>${gwt.version}</version>
             </dependency>
