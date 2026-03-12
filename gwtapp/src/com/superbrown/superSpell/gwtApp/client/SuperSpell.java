@@ -137,9 +137,6 @@ public class SuperSpell implements EntryPoint, IResetable
         }
         else
         {
-            // "I Dream of Jeanie" blink sound
-//            mainPanel.add(new SoundWidget("./audioFiles/iDreamOfJeanie/idoj-blink.mp3", false, true));
-
             if (cheat == Cheat.NO_VALUE_ENTERED)
                 return;
             else if (cheat == Cheat.UNLOCK_MUSIC)
@@ -280,68 +277,39 @@ public class SuperSpell implements EntryPoint, IResetable
 
     private void addSchoolClassChooserPanel(final IResetable caller)
     {
-//        String userAgent = getUserAgent();
-//
-//        // if this is Internet Explorer...
-//        if (userAgent.toLowerCase().contains("msie"))
-//        {
-//            Label internetExplorereWarningLabel =
-//                    new Label("Unfortunately, Super-Spell doesn't work correctly with Internet " +
-//                            "Explorer. You'll have to open it using a different browser " +
-//                            "(possibly one of the ones below).");
-//            internetExplorereWarningLabel.setWordWrap(true);
-//            internetExplorereWarningLabel.setWidth("500px");
-//            internetExplorereWarningLabel.addStyleName("fontSize150");
-//            internetExplorereWarningLabel.addStyleName("arialFont");
-//
-//            HTML link = new HTML("<br/><A HREF=\"http://www.mozilla.com/en-US/firefox\" target=\"_new\">Firefox</A>" +
-//                    "<br/><A HREF=\"http://www.apple.com/safari\" target=\"_new\">Safari</A>" +
-//                    "<br/><A HREF=\"http://www.google.com/chrome\" target=\"_new\">Chrome</A>");
-//
-//
-//            link.addStyleName("fontSize150");
-//            link.addStyleName("arialFont");
-//
-//            mainPanel.clear();
-//            mainPanel.add(internetExplorereWarningLabel);
-//            mainPanel.add(link);
-//        }
-//        else
-//        {
-            ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds(),
-                new AsyncCallback<Void>()
+        ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds(),
+            new AsyncCallback<Void>()
+            {
+                public void onFailure(Throwable e)
                 {
-                    public void onFailure(Throwable e)
-                    {
-                        System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds().");
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    }
+                    System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds().");
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                }
 
-                    public void onSuccess(Void aVoid)
+                public void onSuccess(Void aVoid)
+                {
+                    ISuperSpellService.App.getInstance().getSchoolClassNames(new AsyncCallback<List<String>>()
                     {
-                        ISuperSpellService.App.getInstance().getSchoolClassNames(new AsyncCallback<List<String>>()
+                        public void onFailure(Throwable e)
                         {
-                            public void onFailure(Throwable e)
-                            {
-                                // try again
-                                System.out.println("Failed on ISuperSpellService.App.getInstance().getSchoolClassNames().");
-                                System.out.println(e.getMessage());
-                                e.printStackTrace();
-                            }
+                            // try again
+                            System.out.println("Failed on ISuperSpellService.App.getInstance().getSchoolClassNames().");
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
 
-                            public void onSuccess(List<String> schoolClassNames)
-                            {
-                                SubjectChooserPanel subjectChooserPanel =
-                                        new SubjectChooserPanel(schoolClassNames, caller, mainPanel);
-                                mainPanel.clear();
-                                mainPanel.add(subjectChooserPanel);
-                                subjectChooserPanel.getSchoolClassNamesListBox().setFocus(true);
-                            }
-                        });
-                    }
-            });
-//        }
+                        public void onSuccess(List<String> schoolClassNames)
+                        {
+                            SubjectChooserPanel subjectChooserPanel =
+                                    new SubjectChooserPanel(schoolClassNames, caller, mainPanel);
+                            mainPanel.clear();
+                            mainPanel.add(subjectChooserPanel);
+                            subjectChooserPanel.getSchoolClassNamesListBox().setFocus(true);
+                        }
+                    });
+                }
+        });
     }
 
     private static void setTitlePanel(String text)
