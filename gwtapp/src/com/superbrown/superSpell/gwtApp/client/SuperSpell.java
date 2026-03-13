@@ -112,7 +112,7 @@ public class SuperSpell implements EntryPoint, IResetable
         mainPanel.add(waitingForTeacherLabel);
 
         setSoundEffectSet(Settings.getSoundEffectsSet());
-//        setInReadImmediatelyMode(Settings.getInReadImmediatelyMode());
+        setInReadImmediatelyMode(Settings.getInReadImmediatelyMode());
         setChalkboardDoodlingEnabled(Settings.getChalkboardDoodlingEnabled(), true);
         SuperSpell.setStayAfterSchoolListEnabled(Settings.getStayAfterSchoolListEnabled(), true);
         setUsingPeterMath(Settings.getUsingPeterMath());
@@ -141,8 +141,8 @@ public class SuperSpell implements EntryPoint, IResetable
                 return;
             else if (cheat == Cheat.UNLOCK_MUSIC)
                 toggleUnlockMusic();
-//            else if (cheat == Cheat.READ_IMMEDIATELY_MODE)
-//                toggleInReadImmediatelyMode();
+            else if (cheat == Cheat.READ_IMMEDIATELY_MODE)
+                toggleInReadImmediatelyMode();
             else if (cheat == Cheat.SHOW_ALL_MISPELLINGS)
                 toggleInShowAllMisspellingsMode();
             else if (cheat == Cheat.TURN_ON_THREE_STOOGES_SOUND)
@@ -496,7 +496,7 @@ public class SuperSpell implements EntryPoint, IResetable
     private void silenceSound()
     {
         setSoundEffectSet(SoundPaletteChoice.NONE);
-//        setInReadImmediatelyMode(false);
+        setInReadImmediatelyMode(false);
     }
 
     private void toggleUnlockMusic()
@@ -523,16 +523,16 @@ public class SuperSpell implements EntryPoint, IResetable
         return Settings.getInReadImmediatelyMode();
     }
 
-//    public void toggleInReadImmediatelyMode()
-//    {
-//        Boolean newSetting = !Settings.getInReadImmediatelyMode();
-//        setInReadImmediatelyMode(newSetting);
-//    }
+    public void toggleInReadImmediatelyMode()
+    {
+        Boolean newSetting = !Settings.getInReadImmediatelyMode();
+        setInReadImmediatelyMode(newSetting);
+    }
 
-//    public static void setInReadImmediatelyMode(Boolean newSetting)
-//    {
-//        Settings.setInReadImmediatelyMode(newSetting);
-//    }
+    public static void setInReadImmediatelyMode(Boolean newSetting)
+    {
+        Settings.setInReadImmediatelyMode(newSetting);
+    }
 
     public static Boolean isUsingPeterMath()
     {

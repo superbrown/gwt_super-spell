@@ -17,8 +17,13 @@
   <threadsafe>true</threadsafe>
 
   <!-- Configure serving/caching of GWT files -->
+  <!-- Security headers for modern browsers -->
   <static-files>
-    <include path="**" />
+    <include path="**">
+      <http-header name="X-Content-Type-Options" value="nosniff" />
+      <http-header name="X-Frame-Options" value="DENY" />
+      <http-header name="X-XSS-Protection" value="1; mode=block" />
+    </include>
 
     <!-- GWT nocache files should never be cached -->
     <include path="**.nocache.*" expiration="0s" />
@@ -55,14 +60,5 @@
 
   <!-- Enable sessions for user preferences (cookies) -->
   <sessions-enabled>true</sessions-enabled>
-  
-  <!-- Security headers for modern browsers -->
-  <static-files>
-    <include path="**">
-      <http-header name="X-Content-Type-Options" value="nosniff" />
-      <http-header name="X-Frame-Options" value="DENY" />
-      <http-header name="X-XSS-Protection" value="1; mode=block" />
-    </include>
-  </static-files>
 
 </appengine-web-app>

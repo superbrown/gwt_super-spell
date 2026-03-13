@@ -28,41 +28,50 @@ public abstract class TestQuestionPanel extends com.superbrown.superSpell.gwtApp
         Label asInLabel = new Label("As in...");
         asInLabel.addStyleName("bold");
 
+        // Create horizontal panel for sentence with hear link in parentheses
+        HorizontalPanel sentencePanel = new HorizontalPanel();
+        sentencePanel.setVerticalAlignment(HasVerticalAlignment.ALIGN_MIDDLE);
+        sentencePanel.setSpacing(0);
+        
         Label sampleSentenceLabel = new Label((spellingWord.getSampleSentenceToDisplayToUser()));
         sampleSentenceLabel.addStyleName("bold bottomMargin");
+        sentencePanel.add(sampleSentenceLabel);
+        
+        Label space = new Label("\u00A0\u00A0");
+        space.addStyleName("bold bottomMargin");
+        sentencePanel.add(space);
+        
+        Label openParen = new Label("(");
+        openParen.addStyleName("bold bottomMargin");
+        sentencePanel.add(openParen);
+        
+        createHearSentenceLink(spellingWord);
+        hearSentenceLink.addStyleName("bottomMargin");
+        sentencePanel.add(hearSentenceLink);
+        
+        Label closeParen = new Label(")");
+        closeParen.addStyleName("bold bottomMargin");
+        sentencePanel.add(closeParen);
 
         VerticalPanel verticalPanel_1 = new VerticalPanel();
         verticalPanel_1.add(phoneticSpellingLabel);
         verticalPanel_1.add(asInLabel);
-        verticalPanel_1.add(sampleSentenceLabel);
+        verticalPanel_1.add(sentencePanel);
         verticalPanel_1.setWidth("400px");
 
-        VerticalPanel verticalPanel_2 = new VerticalPanel();
-        verticalPanel_2.addStyleName("leftMargin50");
-
-//        hearSentenceLink = new HearSentenceLink(spellingWord);
-//        hearSentenceLink.setText("Hear Sentence");
-//        hearSentenceLink.addStyleName("underline");
-//        verticalPanel_2.add(hearSentenceLink);
-//
-//        HTML helpLink = new HTML(
-//                "(If the sound doesn't play, an you're using Firefox, " +
-//                "<a href=\"http://cafe.elharo.com/privacy/privacy-tip-3-block-referer-headers-in-firefox\" " +
-//                "target=\"_blank\">do this</a>.) NOTE: This used Google translate to read the sentences. " +
-//                "However, the Google service it used is no longer available, and the one that is available " +
-//                "is not free. So this feature no longer works."
-//
-//        );
-//        verticalPanel_2.add(helpLink);
-
-        HorizontalPanel horizontalPanel = new HorizontalPanel();
-        horizontalPanel.add(verticalPanel_1);
-        horizontalPanel.add(verticalPanel_2);
-
-        panel.add(horizontalPanel);
-
+        panel.add(verticalPanel_1);
 
         return panel;
+    }
+
+    protected HearSentenceLink getHearSentenceLink()
+    {
+        return hearSentenceLink;
+    }
+
+    protected void createHearSentenceLink(SpellingWord spellingWord)
+    {
+        hearSentenceLink = new HearSentenceLink(spellingWord);
     }
 
 
@@ -75,7 +84,7 @@ public abstract class TestQuestionPanel extends com.superbrown.superSpell.gwtApp
 
     protected void onAttachAction()
     {
-        if (SuperSpell.isInReadImmediatelyMode())
+        if (SuperSpell.isInReadImmediatelyMode() && hearSentenceLink != null)
         {
             hearSentenceLink.readNow();
             setToDefaultFocus();

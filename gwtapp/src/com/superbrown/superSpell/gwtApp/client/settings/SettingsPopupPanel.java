@@ -24,10 +24,10 @@ public class SettingsPopupPanel extends PopupPanel
 
         mainPanel.addStyleName("blackFont");
 
-//        final CheckBox inReadImmediatelyModeCheckBox =
-//                new CheckBox("read sample spelling sentences automatically");
-//        inReadImmediatelyModeCheckBox.setValue(Settings.getInReadImmediatelyMode());
-//        mainPanel.add(inReadImmediatelyModeCheckBox);
+        final CheckBox inReadImmediatelyModeCheckBox =
+                new CheckBox("read sample spelling sentences automatically");
+        inReadImmediatelyModeCheckBox.setValue(Settings.getInReadImmediatelyMode());
+        mainPanel.add(inReadImmediatelyModeCheckBox);
 
         final CheckBox chalkboardDoodlingEnabledCheckBox =
                 new CheckBox("chalkboard doodling");
@@ -89,7 +89,7 @@ public class SettingsPopupPanel extends PopupPanel
         {
             public void onClick(ClickEvent clickEvent)
             {
-//                SuperSpell.setInReadImmediatelyMode(inReadImmediatelyModeCheckBox.getValue());
+                SuperSpell.setInReadImmediatelyMode(inReadImmediatelyModeCheckBox.getValue());
 //                Settings.setInShowAllMisspellingsMode(inShowAllMisspellingsModeCheckBox.getValue());
                 SuperSpell.setChalkboardDoodlingEnabled(chalkboardDoodlingEnabledCheckBox.getValue(), false);
                 SuperSpell.setStayAfterSchoolListEnabled(stayAfterSchoolListCheckBox.getValue(), false);
@@ -118,7 +118,7 @@ public class SettingsPopupPanel extends PopupPanel
         this.add(mainPanel);
         this.show();
 
-//        inReadImmediatelyModeCheckBox.setFocus(true);
+        inReadImmediatelyModeCheckBox.setFocus(true);
     }
 
     private ListBox createSoundPalletListBox()

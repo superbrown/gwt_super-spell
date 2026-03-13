@@ -25,7 +25,7 @@ public class Settings
     private static Integer mathQuestionTimeLimitInSeconds = 10;
     private static SoundPaletteChoice soundEffectsSet = SoundPaletteChoice.NONE;
     private static Boolean inShowAllMisspellingsMode = false;
-    private static Boolean inReadImmediatelyMode = false;
+    private static Boolean inReadImmediatelyMode = true;
     private static Boolean usingPeterMath = false;
     private static Boolean stayAfterSchoolListEnabled = true;
     private static Boolean chalkboardDoodlingEnabled = true;
