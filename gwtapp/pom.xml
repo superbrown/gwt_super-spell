@@ -131,6 +131,7 @@
                 <configuration>
                     <projectId>GCLOUD_CONFIG</projectId>
                     <version>GCLOUD_CONFIG</version>
+                    <stage.enableJarClasses>true</stage.enableJarClasses>
                     <deploy>
                         <stopPreviousVersion>true</stopPreviousVersion>
                         <promote>true</promote>

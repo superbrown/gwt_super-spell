@@ -3,8 +3,8 @@
   <!-- Modern App Engine Standard Environment Configuration -->
   <!-- Application ID is now managed via gcloud CLI, not in config -->
   
-  <!-- Use Java 11 runtime for modern App Engine Standard -->
-  <runtime>java11</runtime>
+  <!-- Use Java 17 runtime for modern App Engine Standard -->
+  <runtime>java17</runtime>
   
   <!-- Enable automatic scaling -->
   <automatic-scaling>
