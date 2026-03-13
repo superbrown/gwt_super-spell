@@ -6,9 +6,9 @@ import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFactListForAParticu
 
 public class MultiplicationMathFacts extends MathFactListForAParticularOperator
 {
-    public MultiplicationMathFacts(String name, int timeLimit)
+    public MultiplicationMathFacts(String name)
     {
-        super(name, timeLimit);
+        super(name);
     }
 
     public MultiplicationMathFacts()
@@ -22,8 +22,8 @@ public class MultiplicationMathFacts extends MathFactListForAParticularOperator
         return Settings.HIGHEST_LEVEL_OF_MULTIPLICATION_MATH_FACTS;
     }
 
-    protected MathFactListForAParticularPrimaryOperand createMathFactList(int primaryOperand, int timeLimit, String name)
+    protected MathFactListForAParticularPrimaryOperand createMathFactList(int primaryOperand, String name)
     {
-        return new MultiplicationMathFactListForAParticularPrimaryOperand(primaryOperand, name, timeLimit);
+        return new MultiplicationMathFactListForAParticularPrimaryOperand(primaryOperand, name);
     }
 }

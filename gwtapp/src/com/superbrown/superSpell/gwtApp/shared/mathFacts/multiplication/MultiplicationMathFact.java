@@ -5,7 +5,7 @@ import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFactListForAParticu
 
 public class MultiplicationMathFact extends MathFact
 {
-    public MultiplicationMathFact(MathFactListForAParticularPrimaryOperand parentGroup, int primaryOperand, int secondaryOperand, int timeLimit)
+    public MultiplicationMathFact(MathFactListForAParticularPrimaryOperand parentGroup, int primaryOperand, int secondaryOperand, Integer timeLimit)
     {
         super(parentGroup, primaryOperand, secondaryOperand, timeLimit);
     }

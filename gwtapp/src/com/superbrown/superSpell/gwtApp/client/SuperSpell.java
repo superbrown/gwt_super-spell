@@ -289,12 +289,13 @@ public class SuperSpell implements EntryPoint, IResetable
 
     private void loadMathModuleDirectly()
     {
-        ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds(),
+        final int timeLimit = Settings.getMathQuestionTimeLimitInSeconds();
+        ISuperSpellService.App.getInstance().setMathFactTimeLimit(timeLimit,
             new AsyncCallback<Void>()
             {
                 public void onFailure(Throwable e)
                 {
-                    System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds().");
+                    System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit.");
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 }
@@ -315,8 +316,15 @@ public class SuperSpell implements EntryPoint, IResetable
                             SuperSpell.setSchoolClassName("Math Facts");
                             SuperSpell.setTestableListName("");
 
+                            // Append time limit to display names
+                            List<String> displayNames = new ArrayList<String>();
+                            for (String name : testableListNames)
+                            {
+                                displayNames.add(name + " (" + timeLimit + " second time limit)");
+                            }
+
                             TestableListChooserPanel mathChooserPanel =
-                                    new TestableListChooserPanel("Math Facts", testableListNames, SuperSpell.this);
+                                    new TestableListChooserPanel("Math Facts", displayNames, SuperSpell.this);
                             mainPanel.clear();
                             mainPanel.add(mathChooserPanel);
                             mathChooserPanel.getTestableLiistNamesListBox().setFocus(true);
@@ -328,12 +336,13 @@ public class SuperSpell implements EntryPoint, IResetable
 
     private void addSchoolClassChooserPanel(final IResetable caller)
     {
-        ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds(),
+        final int timeLimit = Settings.getMathQuestionTimeLimitInSeconds();
+        ISuperSpellService.App.getInstance().setMathFactTimeLimit(timeLimit,
             new AsyncCallback<Void>()
             {
                 public void onFailure(Throwable e)
                 {
-                    System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds().");
+                    System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit.");
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 }

@@ -10,17 +10,17 @@ import java.util.ArrayList;
 public abstract class MathFactListForAParticularPrimaryOperand extends TestableItemList
 {
     protected Integer primaryOperand;
-    protected int  timeLimit;
+    protected Integer  timeLimit;
 
     public MathFactListForAParticularPrimaryOperand()
     {
     }
 
-    public MathFactListForAParticularPrimaryOperand(Integer primaryOperand, String explicitName, int timeLimit)
+    public MathFactListForAParticularPrimaryOperand(Integer primaryOperand, String explicitName)
     {
         super(explicitName);
 
-        this.timeLimit = timeLimit;
+        this.timeLimit = null;
 
         this.primaryOperand = primaryOperand;
 
@@ -38,7 +38,7 @@ public abstract class MathFactListForAParticularPrimaryOperand extends TestableI
 
         for (int i = 2; i <= 9 ; i++)
         {
-            MathFact mathFact = createMathFact(i, timeLimit);
+            MathFact mathFact = createMathFact(i);
             testables.add(mathFact);
         }
     }
@@ -61,5 +61,5 @@ public abstract class MathFactListForAParticularPrimaryOperand extends TestableI
         return primaryOperand.toString();
     }
 
-    protected abstract MathFact createMathFact(int secondaryOperand, int timeLimit);
+    protected abstract MathFact createMathFact(int secondaryOperand);
 }

@@ -180,14 +180,14 @@ public class TestableListLibrarian
         add("7th Grade: Spelling of Vocabulary Words", vocabularySpellingListFactory.createSpellingList("grade7/Lessons19Thru21Review.txt"));
     }
 
-    public void initMathFacts(int mathFactTimeLimit)
+    public void initMathFacts()
     {
         removeAllMathFacts();
 
-        add("Math Facts", new MultiplicationMathFacts("Multiplication (" + mathFactTimeLimit + " second time limit)", mathFactTimeLimit));
-        add("Math Facts", new DivisionMathFacts("Division (" + mathFactTimeLimit + " second time limit)", mathFactTimeLimit));
-        add("Math Facts", new AdditionMathFacts("Addition (" + mathFactTimeLimit + " second time limit)", mathFactTimeLimit));
-        add("Math Facts", new SubtractionMathFacts("Subtraction (" + mathFactTimeLimit + " second time limit)", mathFactTimeLimit));
+        add("Math Facts", new MultiplicationMathFacts("Multiplication"));
+        add("Math Facts", new DivisionMathFacts("Division"));
+        add("Math Facts", new AdditionMathFacts("Addition"));
+        add("Math Facts", new SubtractionMathFacts("Subtraction"));
     }
 
     public void add(String schoolClassName, IVocabularyList vocabularyList) {
@@ -246,20 +246,20 @@ public class TestableListLibrarian
         schoolClasses.clear();
     }
 
-    public Set<String> getTestableListNames(String schoolClassName, int mathFactTimeLimit)
+    public Set<String> getTestableListNames(String schoolClassName)
     {
         if ("Math Facts".equals(schoolClassName))
         {
-            initMathFacts(mathFactTimeLimit);
+            initMathFacts();
         }
         return schoolClasses.get(schoolClassName).keySet();
     }
 
-    public ITestable getTestableList(String schoolClassName, String listName, int mathFactTimeLimit)
+    public ITestable getTestableList(String schoolClassName, String listName)
     {
         if ("Math Facts".equals(schoolClassName))
         {
-            initMathFacts(mathFactTimeLimit);
+            initMathFacts();
         }
         return schoolClasses.get(schoolClassName).get(listName);
     }

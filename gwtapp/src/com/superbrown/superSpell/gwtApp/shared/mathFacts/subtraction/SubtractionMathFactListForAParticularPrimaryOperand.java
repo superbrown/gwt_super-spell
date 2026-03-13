@@ -9,9 +9,9 @@ import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFact;
 public class SubtractionMathFactListForAParticularPrimaryOperand
         extends MathFactListForAParticularPrimaryOperand
 {
-    public SubtractionMathFactListForAParticularPrimaryOperand(Integer primaryOperand, String name, int timeLimit)
+    public SubtractionMathFactListForAParticularPrimaryOperand(Integer primaryOperand, String name)
     {
-        super(primaryOperand, name, timeLimit);
+        super(primaryOperand, name);
     }
 
     public SubtractionMathFactListForAParticularPrimaryOperand()
@@ -20,9 +20,8 @@ public class SubtractionMathFactListForAParticularPrimaryOperand
     }
 
     @Override
-    protected MathFact createMathFact(int secondaryOperand, int timeLimit)
+    protected MathFact createMathFact(int secondaryOperand)
     {
-        return new SubtractionMathFact(this, primaryOperand, secondaryOperand, timeLimit);
+        return new SubtractionMathFact(this, primaryOperand, secondaryOperand, null);
     }
-
 }
