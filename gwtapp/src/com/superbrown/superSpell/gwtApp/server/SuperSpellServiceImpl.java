@@ -11,6 +11,9 @@ import java.util.Set;
 
 public class SuperSpellServiceImpl extends RemoteServiceServlet implements ISuperSpellService
 {
+    private static final String MATH_TIME_LIMIT_SESSION_KEY = "mathFactTimeLimit";
+    private static final int DEFAULT_MATH_TIME_LIMIT = 10;
+    
     private TestableListLibrarian testableListLibrarian;
 
     public SuperSpellServiceImpl()
@@ -20,7 +23,7 @@ public class SuperSpellServiceImpl extends RemoteServiceServlet implements ISupe
 
     public ITestable getTestableList(String schoolClassName, String testableListName)
     {
-        ITestable testableList = testableListLibrarian.getTestableList(schoolClassName, testableListName);
+        ITestable testableList = testableListLibrarian.getTestableList(schoolClassName, testableListName, getMathFactTimeLimitFromSession());
         return testableList;
     }
 
@@ -45,7 +48,7 @@ public class SuperSpellServiceImpl extends RemoteServiceServlet implements ISupe
 
         try
         {
-            Set<String> listNames = testableListLibrarian.getTestableListNames(schoolClassName);
+            Set<String> listNames = testableListLibrarian.getTestableListNames(schoolClassName, getMathFactTimeLimitFromSession());
             spellingListNames.addAll(listNames);
             Collections.sort(spellingListNames);
         }
@@ -80,6 +83,12 @@ public class SuperSpellServiceImpl extends RemoteServiceServlet implements ISupe
 
     public void setMathFactTimeLimit(Integer duration)
     {
-        testableListLibrarian.setMathFactTimeLimit(duration);
+        getThreadLocalRequest().getSession().setAttribute(MATH_TIME_LIMIT_SESSION_KEY, duration);
+    }
+    
+    private int getMathFactTimeLimitFromSession()
+    {
+        Integer timeLimit = (Integer) getThreadLocalRequest().getSession().getAttribute(MATH_TIME_LIMIT_SESSION_KEY);
+        return timeLimit != null ? timeLimit : DEFAULT_MATH_TIME_LIMIT;
     }
 }

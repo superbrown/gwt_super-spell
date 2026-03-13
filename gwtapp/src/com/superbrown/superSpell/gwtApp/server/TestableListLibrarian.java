@@ -30,7 +30,6 @@ public class TestableListLibrarian
     private Map<String, Map<String, ITestable>> schoolClasses = new HashMap<>();
 
     private static String STANDARD_CLASS_NAME_PREFIX = "SpellingTest_";
-    private static Integer mathFactTimeLimit = 1;
 
     public TestableListLibrarian()
     {
@@ -52,7 +51,7 @@ public class TestableListLibrarian
 
         add("3rd Grade: Vocabulary", new VocabularyList_WordMaster3("WordMaster 3"));
 
-        initMathFacts();
+        // Math Facts will be initialized on-demand with user's time limit
 
 //        add("5th Grade: Science", new VocabularyList_Lesson13("Chapter 15 vocabulary"));
 
@@ -181,7 +180,7 @@ public class TestableListLibrarian
         add("7th Grade: Spelling of Vocabulary Words", vocabularySpellingListFactory.createSpellingList("grade7/Lessons19Thru21Review.txt"));
     }
 
-    public void initMathFacts()
+    public void initMathFacts(int mathFactTimeLimit)
     {
         removeAllMathFacts();
 
@@ -247,29 +246,26 @@ public class TestableListLibrarian
         schoolClasses.clear();
     }
 
-    public Set<String> getTestableListNames(String schoolClassName)
+    public Set<String> getTestableListNames(String schoolClassName, int mathFactTimeLimit)
     {
+        if ("Math Facts".equals(schoolClassName))
+        {
+            initMathFacts(mathFactTimeLimit);
+        }
         return schoolClasses.get(schoolClassName).keySet();
     }
 
-    public ITestable getTestableList(String schoolClassName, String listName)
+    public ITestable getTestableList(String schoolClassName, String listName, int mathFactTimeLimit)
     {
+        if ("Math Facts".equals(schoolClassName))
+        {
+            initMathFacts(mathFactTimeLimit);
+        }
         return schoolClasses.get(schoolClassName).get(listName);
     }
 
     public Set<String> getSchoolClassNames()
     {
         return schoolClasses.keySet();
-    }
-
-    public static Integer getMathFactTimeLimit()
-    {
-        return mathFactTimeLimit;
-    }
-
-    public void setMathFactTimeLimit(Integer mathFactTimeLimit)
-    {
-        TestableListLibrarian.mathFactTimeLimit = mathFactTimeLimit;
-        initMathFacts();
     }
 }
