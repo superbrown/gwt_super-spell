@@ -3,9 +3,8 @@ package com.superbrown.superSpell.gwtApp.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.logical.shared.CloseEvent;
-import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.superbrown.superSpell.gwtApp.client.common.IResetable;
@@ -16,6 +15,7 @@ import com.superbrown.superSpell.gwtApp.client.common.cheat.Cheat;
 import com.superbrown.superSpell.gwtApp.client.common.cheat.CheatCodePopupPanel;
 import com.superbrown.superSpell.gwtApp.client.common.cheat.CheatCodes;
 import com.superbrown.superSpell.gwtApp.client.common.chooserPanels.SubjectChooserPanel;
+import com.superbrown.superSpell.gwtApp.client.common.chooserPanels.TestableListChooserPanel;
 import com.superbrown.superSpell.gwtApp.client.common.soundPalettes.SoundPalette;
 import com.superbrown.superSpell.gwtApp.client.common.soundPalettes.SoundPalette_GomerPyle;
 import com.superbrown.superSpell.gwtApp.client.common.soundPalettes.SoundPalette_ThreeStooges;
@@ -48,6 +48,7 @@ public class SuperSpell implements EntryPoint, IResetable
     private static MastermindGamePanel mastermindPanel;
     private static RootPanel testableListName;
     private static SoundWidget soundPalletChangeWidget;
+    private static boolean mathDirectMode = false;
 
     private static List<BoardColor> flashingColorSequence = new ArrayList<BoardColor>();
     static
@@ -71,6 +72,10 @@ public class SuperSpell implements EntryPoint, IResetable
      */
     public void onModuleLoad()
     {
+        // Detect if loaded from /math path
+        String path = Window.Location.getPath();
+        mathDirectMode = path.endsWith("/math") || path.endsWith("/math.html");
+
         mainPanel = RootPanel.get("mainPanel");
 
         applicationTitlePanel = RootPanel.get("applicationTitle");
@@ -117,7 +122,14 @@ public class SuperSpell implements EntryPoint, IResetable
         SuperSpell.setStayAfterSchoolListEnabled(Settings.getStayAfterSchoolListEnabled(), true);
         setUsingPeterMath(Settings.getUsingPeterMath());
 
-        addSchoolClassChooserPanel(this);
+        if (mathDirectMode)
+        {
+            loadMathModuleDirectly();
+        }
+        else
+        {
+            addSchoolClassChooserPanel(this);
+        }
     }
 
     public native String getUserAgent() /*-{
@@ -273,6 +285,45 @@ public class SuperSpell implements EntryPoint, IResetable
         {
             activeSoundPalette = soundPalette_silent;
         }
+    }
+
+    private void loadMathModuleDirectly()
+    {
+        ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds(),
+            new AsyncCallback<Void>()
+            {
+                public void onFailure(Throwable e)
+                {
+                    System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds().");
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                }
+
+                public void onSuccess(Void aVoid)
+                {
+                    ISuperSpellService.App.getInstance().getTestableListNames("Math Facts", new AsyncCallback<List<String>>()
+                    {
+                        public void onFailure(Throwable e)
+                        {
+                            System.out.println("Failed to load Math Facts list.");
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+
+                        public void onSuccess(List<String> testableListNames)
+                        {
+                            SuperSpell.setSchoolClassName("Math Facts");
+                            SuperSpell.setTestableListName("");
+
+                            TestableListChooserPanel mathChooserPanel =
+                                    new TestableListChooserPanel("Math Facts", testableListNames, SuperSpell.this);
+                            mainPanel.clear();
+                            mainPanel.add(mathChooserPanel);
+                            mathChooserPanel.getTestableLiistNamesListBox().setFocus(true);
+                        }
+                    });
+                }
+        });
     }
 
     private void addSchoolClassChooserPanel(final IResetable caller)

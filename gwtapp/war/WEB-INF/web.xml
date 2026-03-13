@@ -22,4 +22,12 @@
       <welcome-file>index.html</welcome-file>
   </welcome-file-list>
 
+  <!-- Redirect 404s to index.html for client-side routing.
+       This allows paths like /math to work without creating duplicate HTML files.
+       The GWT application detects the URL path and routes to the appropriate module. -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/index.html</location>
+  </error-page>
+
 </web-app>

@@ -42,7 +42,23 @@ mvn jetty:run
 
 Open your browser to: **http://localhost:8080/**
 
+Or access Math Facts directly: **http://localhost:8080/math**
+
 Press `Ctrl+C` in the terminal to stop the server.
+
+---
+
+## Direct Access URLs
+
+The application supports direct access to specific modules (only for Match at this point), bypassing the subject selection screen:
+
+- **http://localhost:8080/** - Main application with subject chooser
+- **http://localhost:8080/math** - Direct access to Math Facts module (choose Addition, Subtraction, Multiplication, or Division)
+
+This is useful for:
+- Quick access to frequently used modules
+- Bookmarking specific activities
+- Sharing direct links to specific exercises
 
 ---
 

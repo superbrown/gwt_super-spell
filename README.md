@@ -36,9 +36,16 @@ cd gwtapp
 mvn jetty:run
 
 # Open browser to http://localhost:8080
+# Or go directly to Math: http://localhost:8080/math
 ```
 
 See [RUNNING_LOCALLY.md](RUNNING_LOCALLY.md) for detailed instructions.
+
+## Direct Access URLs
+
+The application supports direct access to specific modules:
+- **/** - Main application with subject chooser
+- **/math** - Direct access to Math Facts module (choose Addition, Subtraction, Multiplication, or Division)
 
 ## Recent Modernization
 
