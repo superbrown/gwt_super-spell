@@ -6,11 +6,16 @@
   <!-- Use Java 17 runtime for modern App Engine Standard -->
   <runtime>java17</runtime>
   
+  <!-- Use smallest instance class for cost savings -->
+  <instance-class>F1</instance-class>
+  
   <!-- Enable automatic scaling -->
   <automatic-scaling>
     <min-instances>0</min-instances>
-    <max-instances>10</max-instances>
-    <target-cpu-utilization>0.6</target-cpu-utilization>
+    <max-instances>2</max-instances>
+    <min-idle-instances>0</min-idle-instances>
+    <max-idle-instances>0</max-idle-instances>
+    <target-cpu-utilization>0.8</target-cpu-utilization>
   </automatic-scaling>
 
   <!-- Allows App Engine to send multiple requests to one instance in parallel -->

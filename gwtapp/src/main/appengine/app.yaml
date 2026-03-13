@@ -1,13 +1,17 @@
 # Modern App Engine Standard Environment Configuration
 # This file works alongside appengine-web.xml for Java 11 runtime
 
-runtime: java11
+runtime: java17
+
+instance_class: F1
 
 # Automatic scaling configuration
 automatic_scaling:
   min_instances: 0
-  max_instances: 10
-  target_cpu_utilization: 0.6
+  max_instances: 2
+  min_idle_instances: 0
+  max_idle_instances: 0
+  target_cpu_utilization: 0.8
 
 # Environment variables
 env_variables:
