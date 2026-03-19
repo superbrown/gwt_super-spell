@@ -18,6 +18,7 @@ public class HearSentenceLink extends Hyperlink
         this.spellingWord = spellingWord;
         setText("hear sentence");
         addStyleName("underline");
+        getElement().getStyle().setProperty("whiteSpace", "nowrap");
         addDomHandler(clickEvent -> readNow(), ClickEvent.getType());
     }
 
