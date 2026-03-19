@@ -20,6 +20,8 @@ https://play.google.com/store/apps/details?id=com.superbrown.vocabBlaster
 - **[QUICKSTART.md](QUICKSTART.md)** - Quick start guide for building and running the project
 - **[RUNNING_LOCALLY.md](RUNNING_LOCALLY.md)** - Detailed instructions for local development and testing
 - **[APPLICATION_DESCRIPTION.md](APPLICATION_DESCRIPTION.md)** - Comprehensive overview of features and architecture
+- **[DESIGN.md](DESIGN.md)** - Application design: architecture, data flow, and component details
+- **[UI_DESIGN.md](UI_DESIGN.md)** - UI layout, theming, and navigation behavior
 - **[MIGRATION.md](MIGRATION.md)** - Maven migration notes from original Ant build system
 - **[GWT_MAVEN_PLUGIN.md](GWT_MAVEN_PLUGIN.md)** - Guide to using the GWT Maven plugin
 - **[APP_ENGINE_DEPLOYMENT.md](APP_ENGINE_DEPLOYMENT.md)** - Instructions for deploying to Google App Engine
