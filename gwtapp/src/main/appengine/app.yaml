@@ -1,5 +1,5 @@
 # Modern App Engine Standard Environment Configuration
-# This file works alongside appengine-web.xml for Java 11 runtime
+# This file works alongside appengine-web.xml for Java 17 runtime
 
 runtime: java17
 

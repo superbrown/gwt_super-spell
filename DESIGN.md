@@ -341,6 +341,6 @@ mvn appengine:deploy
 - [APPLICATION_DESCRIPTION.md](APPLICATION_DESCRIPTION.md) - Feature overview
 - [UI_DESIGN.md](UI_DESIGN.md) - UI layout, theming, and navigation behavior
 - [MATH_DIRECT_ACCESS.md](MATH_DIRECT_ACCESS.md) - /math URL implementation
-- [RUNNING_LOCALLY.md](RUNNING_LOCALLY.md) - Development setup
+- [LOCAL_DEPLOYMENT.md](LOCAL_DEPLOYMENT.md) - Development setup
 - [APP_ENGINE_DEPLOYMENT.md](APP_ENGINE_DEPLOYMENT.md) - Production deployment
 - [TODO_BROKEN_FEATURES.md](TODO_BROKEN_FEATURES.md) - Modernization status

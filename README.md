@@ -18,7 +18,7 @@ https://play.google.com/store/apps/details?id=com.superbrown.vocabBlaster
 ## Documentation
 
 - **[QUICKSTART.md](QUICKSTART.md)** - Quick start guide for building and running the project
-- **[RUNNING_LOCALLY.md](RUNNING_LOCALLY.md)** - Detailed instructions for local development and testing
+- **[LOCAL_DEPLOYMENT.md](LOCAL_DEPLOYMENT.md)** - Detailed instructions for local development and testing
 - **[APPLICATION_DESCRIPTION.md](APPLICATION_DESCRIPTION.md)** - Comprehensive overview of features and architecture
 - **[DESIGN.md](DESIGN.md)** - Application design: architecture, data flow, and component details
 - **[UI_DESIGN.md](UI_DESIGN.md)** - UI layout, theming, and navigation behavior
@@ -41,7 +41,7 @@ mvn jetty:run
 # Or go directly to Math: http://localhost:8080/math
 ```
 
-See [RUNNING_LOCALLY.md](RUNNING_LOCALLY.md) for detailed instructions.
+See [LOCAL_DEPLOYMENT.md](LOCAL_DEPLOYMENT.md) for detailed instructions.
 
 ## Direct Access URLs
 

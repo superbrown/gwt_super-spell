@@ -141,7 +141,7 @@ A servlet filter was attempted but caused `ClassNotFoundException` issues with `
 | `gwtapp/war/index.html` | Changed resource paths from relative to absolute |
 | `gwtapp/src/.../SuperSpell.java` | Added `mathDirectMode` flag and `loadMathModuleDirectly()` method |
 | `README.md` | Documented `/math` URL |
-| `RUNNING_LOCALLY.md` | Documented `/math` URL |
+| `LOCAL_DEPLOYMENT.md` | Documented `/math` URL |
 
 ## Testing
 
