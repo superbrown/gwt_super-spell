@@ -133,6 +133,7 @@
                     <version>GCLOUD_CONFIG</version>
                     <promote>true</promote>
                     <stopPreviousVersion>true</stopPreviousVersion>
+                    <enableJarClasses>true</enableJarClasses>
                 </configuration>
             </plugin>
         </plugins>
