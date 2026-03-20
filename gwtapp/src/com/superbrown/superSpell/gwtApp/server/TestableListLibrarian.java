@@ -48,13 +48,10 @@ public class TestableListLibrarian
 
         add("3rd Grade: Vocabulary", new VocabularyList_WordMaster3("WordMaster 3"));
 
-        // Math Facts will be initialized on-demand with user's time limit
-
-//        add("5th Grade: Science", new VocabularyList_Lesson13("Chapter 15 vocabulary"));
+        initMathFacts();
 
         add("3rd Grade: Social Studies", new VocabularyList_SocialStudies_Unit01("Unit 1 vocabulary"));
 
-//        add("6th Grade: Vocabulary", new VocabularyList_Lesson13("Vocabulary Lesson 13"));
         add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson01("Vocabulary Lesson 01"));
         add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson02("Vocabulary Lesson 02"));
         add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson03("Vocabulary Lesson 03"));
@@ -79,7 +76,7 @@ public class TestableListLibrarian
         add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson22("Vocabulary Lesson 22"));
         add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson23("Vocabulary Lesson 23"));
         add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson24("Vocabulary Lesson 24"));
-//        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson11Through20Review("Vocabulary Lesson 11 through 20"));
+        add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_Lesson11Through20Review("Vocabulary Lesson 11 through 20"));
         add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_WordMasterI("WordMaster 1"));
         add("6th Grade: Vocabulary", new com.superbrown.superSpell.gwtApp.server.vocabulary.vocabularyLists.grade6.VocabularyList_WordMasterII("WordMaster 2"));
 
@@ -218,15 +215,6 @@ public class TestableListLibrarian
 
         testableList.setNane(name);
 
-//        for (SpellingWord spellingWord : spellingList.getSpellingWords())
-//        {
-//            System.out.println();
-//            System.out.println();
-//            System.out.println(spellingWord.getCorrectSpelling() + "  " + spellingWord.getPhoneticSpelling());
-//            System.out.println();
-//            System.out.println(spellingWord.getIncorrectSpellings());
-//        }
-
         Map<String, ITestable> testableListMapForThisClass = schoolClasses.get(schoolClassName);
         if (testableListMapForThisClass == null)
         {
@@ -255,19 +243,11 @@ public class TestableListLibrarian
 
     public Set<String> getTestableListNames(String schoolClassName)
     {
-        if ("Math Facts".equals(schoolClassName))
-        {
-            initMathFacts();
-        }
         return schoolClasses.get(schoolClassName).keySet();
     }
 
     public ITestable getTestableList(String schoolClassName, String listName)
     {
-        if ("Math Facts".equals(schoolClassName))
-        {
-            initMathFacts();
-        }
         return schoolClasses.get(schoolClassName).get(listName);
     }
 
