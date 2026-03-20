@@ -16,10 +16,8 @@
     <min-idle-instances>0</min-idle-instances>
     <max-idle-instances>0</max-idle-instances>
     <target-cpu-utilization>0.8</target-cpu-utilization>
+    <max-concurrent-requests>10</max-concurrent-requests>
   </automatic-scaling>
-
-  <!-- Allows App Engine to send multiple requests to one instance in parallel -->
-  <threadsafe>true</threadsafe>
 
   <!-- Configure serving/caching of GWT files -->
   <!-- Security headers for modern browsers -->
