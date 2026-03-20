@@ -18,10 +18,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
-//import com.superbrown.superSpell.gwtApp.server.spelling.spellingLists.grade3.SpellingList_2010_08_27;
-//import com.superbrown.superSpell.gwtApp.server.spelling.spellingLists.grade3.SpellingList_2010_09_03;
-//import com.superbrown.superSpell.gwtApp.server.spelling.spellingLists.grade3.SpellingList_2010_09_10;
-//import com.superbrown.superSpell.gwtApp.server.spelling.spellingLists.grade6.*;
+
 
 /**
  */
@@ -117,20 +114,30 @@ public class TestableListLibrarian
         SpellingListFactory spellingListFactory = new SpellingListFactory();
         SpellingListFactory vocabularySpellingListFactory = new VocabularySpellingListFactory();
 
-//        add("Spelling: 2nd Grade", new com.superbrown.superSpell.gwtApp.shared.spelling.spellingLists.grade2.SpellingList_2010_05_07());
-//        add("Spelling: 2nd Grade", new com.superbrown.superSpell.gwtApp.shared.spelling.spellingLists.grade2.SpellingList_2010_05_14());
+        add("2nd Grade: Spelling", spellingListFactory.createSpellingList("grade2/2010-05-07.txt"));
+        add("2nd Grade: Spelling", spellingListFactory.createSpellingList("grade2/2010-05-14.txt"));
 
-        //        add("3rd Grade: Spelling", new SpellingList_2010_08_27());
-//        add("3rd Grade: Spelling", new SpellingList_2010_09_03());
-//        add("3rd Grade: Spelling", new SpellingList_2010_09_10());
-//        add(THIRD_GRADE_SPELLING, spellingListFactory.createSpellingList("grade3/2010-10-29.txt"));
+        add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2010-08-27.txt"));
+        add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2010-09-03.txt"));
+        add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2010-09-10.txt"));
+        add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2010-10-29.txt"));
         add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2010-11-05.txt"));
+        add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2010-12-03.txt"));
         add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2010-11-12.txt"));
         add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2010-11-19.txt"));
         add("3rd Grade: Spelling", spellingListFactory.createSpellingList("grade3/2011-05-20.txt"));
 
         add("4th Grade: Spelling", spellingListFactory.createSpellingList("grade4/Unit05.txt"));
         add("4th Grade: Spelling", spellingListFactory.createSpellingList("grade4/Unit06.txt"));
+
+        add("5th Grade: Spelling", spellingListFactory.createSpellingList("grade5/2010-04-09.txt"));
+        add("5th Grade: Spelling", spellingListFactory.createSpellingList("grade5/2010-04-16.txt"));
+        add("5th Grade: Spelling", spellingListFactory.createSpellingList("grade5/2010-04-23.txt"));
+        add("5th Grade: Spelling", spellingListFactory.createSpellingList("grade5/2010-04-30.txt"));
+        add("5th Grade: Spelling", spellingListFactory.createSpellingList("grade5/2010-05-07.txt"));
+        add("5th Grade: Spelling", spellingListFactory.createSpellingList("grade5/2010-05-14.txt"));
+        add("5th Grade: Spelling", spellingListFactory.createSpellingList("grade5/2010-05-21.txt"));
+        add("5th Grade: Spelling", spellingListFactory.createSpellingList("grade5/WordsLoganMisspells.txt"));
 
         add("6th Grade: Spelling", spellingListFactory.createSpellingList("grade6/WordsLoganHasMisspelled01.txt"));
         add("6th Grade: Spelling", spellingListFactory.createSpellingList("grade6/Unit01.txt"));

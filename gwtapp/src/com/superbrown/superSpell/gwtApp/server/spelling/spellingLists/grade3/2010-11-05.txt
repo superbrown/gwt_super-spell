@@ -8,10 +8,10 @@ The food will eventually |spoil|.~spoil
 It's your |choice| whether to join us or not.~chois
 That |soil| is great for plant growth.~soil
 What's the |point| of that story?~point
-He wrapped te eleftovers in aluminum |foil|.~foil
+He wrapped the leftovers in aluminum |foil|.~foil
 Her |voice| was getting hoarse from cheering her team.~vois
 The snake curled up into a |coil|.~koil
-Our over can |broil| food.~broil
+Our oven can |broil| food.~broil
 She really had to |toil| to get all her work done in time.~toil
 |rejoice| in the Lord!~ri-jois
 I hope you |enjoy| the movie as much as I did.~en-joi
