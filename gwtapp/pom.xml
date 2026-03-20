@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.superbrown.superspell</groupId>
+        <artifactId>gwt-super-spell-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>gwt-app</artifactId>
+    <packaging>war</packaging>
+
+    <name>GWT Super Spell Application</name>
+    <description>Main GWT Super Spell web application</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-user</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-servlet</artifactId>
+        </dependency>
+        
+        <!-- GWT Dev (for development mode) -->
+        <dependency>
+            <groupId>org.gwtproject</groupId>
+            <artifactId>gwt-dev</artifactId>
+            <version>${gwt.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.allen-sauer.gwt.dnd</groupId>
+            <artifactId>gwt-dnd</artifactId>
+        </dependency>
+
+        <!-- Servlet API - Jakarta EE -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>5.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <outputDirectory>war/WEB-INF/classes</outputDirectory>
+        
+        <!-- Include source files as resources for GWT compilation -->
+        <resources>
+            <resource>
+                <directory>src</directory>
+                <includes>
+                    <include>**/*.java</include>
+                    <include>**/*.gwt.xml</include>
+                    <include>**/*.properties</include>
+                    <include>**/*.txt</include>
+                </includes>
+            </resource>
+        </resources>
+        
+        <plugins>
+            <!-- GWT Maven Plugin -->
+            <plugin>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <version>1.1.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <moduleName>com.superbrown.superSpell.gwtApp.GwtApp</moduleName>
+                    <moduleShortName>gwtapp</moduleShortName>
+                    <launcherDir>${project.basedir}/war</launcherDir>
+                    <webappDirectory>${project.basedir}/war</webappDirectory>
+                    <classpathScope>compile</classpathScope>
+                    <style>OBFUSCATED</style>
+                    <logLevel>INFO</logLevel>
+                    <sourceLevel>11</sourceLevel>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!-- Maven WAR Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <warSourceDirectory>war</warSourceDirectory>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            
+            <!-- Jetty Plugin for local development -->
+            <!-- Using Jetty 10 which supports both javax.servlet and jakarta.servlet -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>10.0.20</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                        <resourceBases>
+                            <resourceBase>${project.basedir}/war</resourceBase>
+                        </resourceBases>
+                    </webApp>
+                    <httpConnector>
+                        <port>8080</port>
+                    </httpConnector>
+                    <scan>5</scan>
+                </configuration>
+            </plugin>
+            
+            <!-- Google App Engine Maven Plugin -->
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>2.4.4</version>
+                <configuration>
+                    <projectId>GCLOUD_CONFIG</projectId>
+                    <version>GCLOUD_CONFIG</version>
+                    <promote>true</promote>
+                    <stopPreviousVersion>true</stopPreviousVersion>
+                    <enableJarClasses>true</enableJarClasses>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

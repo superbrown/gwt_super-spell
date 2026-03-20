@@ -5,7 +5,7 @@ import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFact;
 
 public class DivisionMathFact extends MathFact
 {
-    public DivisionMathFact(MathFactListForAParticularPrimaryOperand parentGroup, int primaryOperand, int secondaryOperand, int timeLimit)
+    public DivisionMathFact(MathFactListForAParticularPrimaryOperand parentGroup, int primaryOperand, int secondaryOperand, Integer timeLimit)
     {
         super(parentGroup, primaryOperand, secondaryOperand, timeLimit);
     }

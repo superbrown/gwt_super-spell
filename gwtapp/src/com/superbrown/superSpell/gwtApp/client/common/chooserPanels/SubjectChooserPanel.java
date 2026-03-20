@@ -4,10 +4,12 @@ import com.google.gwt.event.dom.client.ChangeEvent;
 import com.google.gwt.event.dom.client.ChangeHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
+import com.superbrown.superSpell.gwtApp.client.Settings;
 import com.superbrown.superSpell.gwtApp.client.SuperSpell;
 import com.superbrown.superSpell.gwtApp.client.common.IResetable;
 import com.superbrown.superSpell.gwtApp.client.services.ISuperSpellService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -88,6 +90,18 @@ public class SubjectChooserPanel extends VerticalPanel implements IResetable
             public void onSuccess(List<String> testableListNames)
             {
                 SuperSpell.setSchoolClassName(schoolClassName);
+
+                // If Math Facts, append time limit to display names
+                if ("Math Facts".equals(schoolClassName))
+                {
+                    int timeLimit = Settings.getMathQuestionTimeLimitInSeconds();
+                    List<String> displayNames = new ArrayList<String>();
+                    for (String name : testableListNames)
+                    {
+                        displayNames.add(name + " (" + timeLimit + " second time limit)");
+                    }
+                    testableListNames = displayNames;
+                }
 
                 TestableListChooserPanel testableListChooserPanel =
                         new TestableListChooserPanel(schoolClassName, testableListNames, caller);

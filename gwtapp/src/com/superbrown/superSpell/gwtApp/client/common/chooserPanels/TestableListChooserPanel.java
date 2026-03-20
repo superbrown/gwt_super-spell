@@ -7,6 +7,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.superbrown.superSpell.gwtApp.client.Settings;
 import com.superbrown.superSpell.gwtApp.client.SuperSpell;
 import com.superbrown.superSpell.gwtApp.client.common.IResetable;
 import com.superbrown.superSpell.gwtApp.client.mathFacts.PrimaryOperandChooserPanel;
@@ -14,7 +15,9 @@ import com.superbrown.superSpell.gwtApp.client.services.ISuperSpellService;
 import com.superbrown.superSpell.gwtApp.client.spelling.SpellingWordSetChooserPanel;
 import com.superbrown.superSpell.gwtApp.client.vocabulary.VocabularyWordSetChooserPanel;
 import com.superbrown.superSpell.gwtApp.shared.ITestable;
+import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFact;
 import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFactListForAParticularOperator;
+import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFactListForAParticularPrimaryOperand;
 import com.superbrown.superSpell.gwtApp.shared.spelling.SpellingList;
 import com.superbrown.superSpell.gwtApp.shared.vocabulary.IVocabularyList;
 
@@ -85,8 +88,11 @@ public class TestableListChooserPanel extends VerticalPanel implements IResetabl
 
     private void openTestSetChooserPanel(final String testableListName)
     {
+        // Strip time limit suffix if present (for Math Facts)
+        String serverName = testableListName.replaceAll(" \\(\\d+ second time limit\\)$", "");
+        
         ISuperSpellService.App.getInstance().getTestableList(
-                schoolClassName, testableListName, new AsyncCallback<ITestable>()
+                schoolClassName, serverName, new AsyncCallback<ITestable>()
         {
             RootPanel parentPanel = RootPanel.get("mainPanel");
 
@@ -117,6 +123,7 @@ public class TestableListChooserPanel extends VerticalPanel implements IResetabl
                 }
                 else if (testableList instanceof MathFactListForAParticularOperator)
                 {
+                    updateMathFactTimeLimit((MathFactListForAParticularOperator)testableList);
                     PrimaryOperandChooserPanel testableWordSetChooserPanel =
                             new PrimaryOperandChooserPanel((MathFactListForAParticularOperator)testableList);
                     parentPanel.clear();
@@ -136,6 +143,18 @@ public class TestableListChooserPanel extends VerticalPanel implements IResetabl
     {
         clear();
         init();
+    }
+
+    private void updateMathFactTimeLimit(MathFactListForAParticularOperator mathFactList)
+    {
+        int timeLimit = Settings.getMathQuestionTimeLimitInSeconds();
+        for (MathFactListForAParticularPrimaryOperand primaryOperandList : mathFactList.getMathFactLists())
+        {
+            for (ITestable testable : primaryOperandList.getTestables())
+            {
+                ((MathFact)testable).setTimeLimit(timeLimit);
+            }
+        }
     }
 
 }

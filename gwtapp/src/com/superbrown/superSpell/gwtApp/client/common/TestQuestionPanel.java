@@ -34,7 +34,7 @@ public abstract class TestQuestionPanel extends VerticalPanel
             "Exactly!",
             "Way to go!",
             "Very good!",
-            "Yey!",
+            "Yay!",
             "You rock!",
             "Woo-whoo!"
         });

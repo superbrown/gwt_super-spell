@@ -14,7 +14,7 @@ public abstract class MathFactListForAParticularOperator implements Serializable
     private List <MathFactListForAParticularPrimaryOperand> mathFactListForAParticularPrimaryOperand;
     private String name;
 
-    public MathFactListForAParticularOperator(String explicitName, int timeLimit)
+    public MathFactListForAParticularOperator(String explicitName)
     {
         this.name = explicitName;
 
@@ -22,7 +22,7 @@ public abstract class MathFactListForAParticularOperator implements Serializable
 
         for (int primaryOperand = 2; primaryOperand < getHighestLevelToGo() + 1; primaryOperand++)
         {
-            mathFactListForAParticularPrimaryOperand.add(createMathFactList(primaryOperand, timeLimit, "" + primaryOperand + "'s"));
+            mathFactListForAParticularPrimaryOperand.add(createMathFactList(primaryOperand, "" + primaryOperand + "'s"));
         }
     }
 
@@ -32,7 +32,7 @@ public abstract class MathFactListForAParticularOperator implements Serializable
 
     protected abstract double getHighestLevelToGo();
 
-    protected abstract MathFactListForAParticularPrimaryOperand createMathFactList(int primaryOperand, int timeLimit, String name);
+    protected abstract MathFactListForAParticularPrimaryOperand createMathFactList(int primaryOperand, String name);
 
     public List<MathFactListForAParticularPrimaryOperand> getMathFactLists()
     {

@@ -16,7 +16,7 @@ public abstract class MathFact extends TestableItem
     protected int secondaryOperand;
     protected MathFactListForAParticularPrimaryOperand parentGroup;
     private Set<String> incorrectAnswers;
-    private int timeLimit;
+    private Integer timeLimit;
 
     public MathFact()
     {
@@ -27,7 +27,7 @@ public abstract class MathFact extends TestableItem
             MathFactListForAParticularPrimaryOperand parentGroup,
             int primaryOperand,
             int secondaryOperand,
-            int timeLimit)
+            Integer timeLimit)
     {
         this();
 
@@ -90,12 +90,12 @@ public abstract class MathFact extends TestableItem
 
     protected abstract void initializeCorrectAnswer();
 
-    public int getTimeLimit()
+    public Integer getTimeLimit()
     {
         return timeLimit;
     }
 
-    public void setTimeLimit(int timeLimit)
+    public void setTimeLimit(Integer timeLimit)
     {
         this.timeLimit = timeLimit;
     }

@@ -3,9 +3,8 @@ package com.superbrown.superSpell.gwtApp.client;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.logical.shared.CloseEvent;
-import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.*;
 import com.superbrown.superSpell.gwtApp.client.common.IResetable;
@@ -16,6 +15,7 @@ import com.superbrown.superSpell.gwtApp.client.common.cheat.Cheat;
 import com.superbrown.superSpell.gwtApp.client.common.cheat.CheatCodePopupPanel;
 import com.superbrown.superSpell.gwtApp.client.common.cheat.CheatCodes;
 import com.superbrown.superSpell.gwtApp.client.common.chooserPanels.SubjectChooserPanel;
+import com.superbrown.superSpell.gwtApp.client.common.chooserPanels.TestableListChooserPanel;
 import com.superbrown.superSpell.gwtApp.client.common.soundPalettes.SoundPalette;
 import com.superbrown.superSpell.gwtApp.client.common.soundPalettes.SoundPalette_GomerPyle;
 import com.superbrown.superSpell.gwtApp.client.common.soundPalettes.SoundPalette_ThreeStooges;
@@ -48,6 +48,7 @@ public class SuperSpell implements EntryPoint, IResetable
     private static MastermindGamePanel mastermindPanel;
     private static RootPanel testableListName;
     private static SoundWidget soundPalletChangeWidget;
+    private static boolean mathDirectMode = false;
 
     private static List<BoardColor> flashingColorSequence = new ArrayList<BoardColor>();
     static
@@ -71,6 +72,10 @@ public class SuperSpell implements EntryPoint, IResetable
      */
     public void onModuleLoad()
     {
+        // Detect if loaded from /math path
+        String path = Window.Location.getPath();
+        mathDirectMode = path.endsWith("/math") || path.endsWith("/math.html");
+
         mainPanel = RootPanel.get("mainPanel");
 
         applicationTitlePanel = RootPanel.get("applicationTitle");
@@ -112,12 +117,19 @@ public class SuperSpell implements EntryPoint, IResetable
         mainPanel.add(waitingForTeacherLabel);
 
         setSoundEffectSet(Settings.getSoundEffectsSet());
-//        setInReadImmediatelyMode(Settings.getInReadImmediatelyMode());
+        setInReadImmediatelyMode(Settings.getInReadImmediatelyMode());
         setChalkboardDoodlingEnabled(Settings.getChalkboardDoodlingEnabled(), true);
         SuperSpell.setStayAfterSchoolListEnabled(Settings.getStayAfterSchoolListEnabled(), true);
         setUsingPeterMath(Settings.getUsingPeterMath());
 
-        addSchoolClassChooserPanel(this);
+        if (mathDirectMode)
+        {
+            loadMathModuleDirectly();
+        }
+        else
+        {
+            addSchoolClassChooserPanel(this);
+        }
     }
 
     public native String getUserAgent() /*-{
@@ -137,15 +149,12 @@ public class SuperSpell implements EntryPoint, IResetable
         }
         else
         {
-            // "I Dream of Jeanie" blink sound
-//            mainPanel.add(new SoundWidget("./audioFiles/iDreamOfJeanie/idoj-blink.mp3", false, true));
-
             if (cheat == Cheat.NO_VALUE_ENTERED)
                 return;
             else if (cheat == Cheat.UNLOCK_MUSIC)
                 toggleUnlockMusic();
-//            else if (cheat == Cheat.READ_IMMEDIATELY_MODE)
-//                toggleInReadImmediatelyMode();
+            else if (cheat == Cheat.READ_IMMEDIATELY_MODE)
+                toggleInReadImmediatelyMode();
             else if (cheat == Cheat.SHOW_ALL_MISPELLINGS)
                 toggleInShowAllMisspellingsMode();
             else if (cheat == Cheat.TURN_ON_THREE_STOOGES_SOUND)
@@ -278,70 +287,89 @@ public class SuperSpell implements EntryPoint, IResetable
         }
     }
 
+    private void loadMathModuleDirectly()
+    {
+        final int timeLimit = Settings.getMathQuestionTimeLimitInSeconds();
+        ISuperSpellService.App.getInstance().setMathFactTimeLimit(timeLimit,
+            new AsyncCallback<Void>()
+            {
+                public void onFailure(Throwable e)
+                {
+                    System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit.");
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                }
+
+                public void onSuccess(Void aVoid)
+                {
+                    ISuperSpellService.App.getInstance().getTestableListNames("Math Facts", new AsyncCallback<List<String>>()
+                    {
+                        public void onFailure(Throwable e)
+                        {
+                            System.out.println("Failed to load Math Facts list.");
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
+
+                        public void onSuccess(List<String> testableListNames)
+                        {
+                            SuperSpell.setSchoolClassName("Math Facts");
+                            SuperSpell.setTestableListName("");
+
+                            // Append time limit to display names
+                            List<String> displayNames = new ArrayList<String>();
+                            for (String name : testableListNames)
+                            {
+                                displayNames.add(name + " (" + timeLimit + " second time limit)");
+                            }
+
+                            TestableListChooserPanel mathChooserPanel =
+                                    new TestableListChooserPanel("Math Facts", displayNames, SuperSpell.this);
+                            mainPanel.clear();
+                            mainPanel.add(mathChooserPanel);
+                            mathChooserPanel.getTestableLiistNamesListBox().setFocus(true);
+                        }
+                    });
+                }
+        });
+    }
+
     private void addSchoolClassChooserPanel(final IResetable caller)
     {
-//        String userAgent = getUserAgent();
-//
-//        // if this is Internet Explorer...
-//        if (userAgent.toLowerCase().contains("msie"))
-//        {
-//            Label internetExplorereWarningLabel =
-//                    new Label("Unfortunately, Super-Spell doesn't work correctly with Internet " +
-//                            "Explorer. You'll have to open it using a different browser " +
-//                            "(possibly one of the ones below).");
-//            internetExplorereWarningLabel.setWordWrap(true);
-//            internetExplorereWarningLabel.setWidth("500px");
-//            internetExplorereWarningLabel.addStyleName("fontSize150");
-//            internetExplorereWarningLabel.addStyleName("arialFont");
-//
-//            HTML link = new HTML("<br/><A HREF=\"http://www.mozilla.com/en-US/firefox\" target=\"_new\">Firefox</A>" +
-//                    "<br/><A HREF=\"http://www.apple.com/safari\" target=\"_new\">Safari</A>" +
-//                    "<br/><A HREF=\"http://www.google.com/chrome\" target=\"_new\">Chrome</A>");
-//
-//
-//            link.addStyleName("fontSize150");
-//            link.addStyleName("arialFont");
-//
-//            mainPanel.clear();
-//            mainPanel.add(internetExplorereWarningLabel);
-//            mainPanel.add(link);
-//        }
-//        else
-//        {
-            ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds(),
-                new AsyncCallback<Void>()
+        final int timeLimit = Settings.getMathQuestionTimeLimitInSeconds();
+        ISuperSpellService.App.getInstance().setMathFactTimeLimit(timeLimit,
+            new AsyncCallback<Void>()
+            {
+                public void onFailure(Throwable e)
                 {
-                    public void onFailure(Throwable e)
-                    {
-                        System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit(Settings.getMathQuestionTimeLimitInSeconds().");
-                        System.out.println(e.getMessage());
-                        e.printStackTrace();
-                    }
+                    System.out.println("Failed on ISuperSpellService.App.getInstance().setMathFactTimeLimit.");
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                }
 
-                    public void onSuccess(Void aVoid)
+                public void onSuccess(Void aVoid)
+                {
+                    ISuperSpellService.App.getInstance().getSchoolClassNames(new AsyncCallback<List<String>>()
                     {
-                        ISuperSpellService.App.getInstance().getSchoolClassNames(new AsyncCallback<List<String>>()
+                        public void onFailure(Throwable e)
                         {
-                            public void onFailure(Throwable e)
-                            {
-                                // try again
-                                System.out.println("Failed on ISuperSpellService.App.getInstance().getSchoolClassNames().");
-                                System.out.println(e.getMessage());
-                                e.printStackTrace();
-                            }
+                            // try again
+                            System.out.println("Failed on ISuperSpellService.App.getInstance().getSchoolClassNames().");
+                            System.out.println(e.getMessage());
+                            e.printStackTrace();
+                        }
 
-                            public void onSuccess(List<String> schoolClassNames)
-                            {
-                                SubjectChooserPanel subjectChooserPanel =
-                                        new SubjectChooserPanel(schoolClassNames, caller, mainPanel);
-                                mainPanel.clear();
-                                mainPanel.add(subjectChooserPanel);
-                                subjectChooserPanel.getSchoolClassNamesListBox().setFocus(true);
-                            }
-                        });
-                    }
-            });
-//        }
+                        public void onSuccess(List<String> schoolClassNames)
+                        {
+                            SubjectChooserPanel subjectChooserPanel =
+                                    new SubjectChooserPanel(schoolClassNames, caller, mainPanel);
+                            mainPanel.clear();
+                            mainPanel.add(subjectChooserPanel);
+                            subjectChooserPanel.getSchoolClassNamesListBox().setFocus(true);
+                        }
+                    });
+                }
+        });
     }
 
     private static void setTitlePanel(String text)
@@ -481,24 +509,14 @@ public class SuperSpell implements EntryPoint, IResetable
         final Hyperlink cheatCodeLink = new Hyperlink();
         cheatCodeLink.setText("enter cheat code");
         cheatCodeLink.addStyleName("underline");
-        cheatCodeLink.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent clickEvent)
-            {
-                final CheatCodePopupPanel panel = new CheatCodePopupPanel();
-                panel.setPopupPosition(
-                        linksInUpperRightCornerPanel.getAbsoluteLeft(),
-                        linksInUpperRightCornerPanel.getAbsoluteTop() + 10);
-                panel.show();
-                panel.addCloseHandler(new CloseHandler()
-                {
-                    public void onClose(CloseEvent closeEvent)
-                    {
-                        handleCheatCodeDialogClosure(panel);
-                    }
-                });
-            }
-        });
+        cheatCodeLink.addDomHandler(clickEvent -> {
+            final CheatCodePopupPanel panel = new CheatCodePopupPanel();
+            panel.setPopupPosition(
+                    linksInUpperRightCornerPanel.getAbsoluteLeft(),
+                    linksInUpperRightCornerPanel.getAbsoluteTop() + 10);
+            panel.show();
+            panel.addCloseHandler(closeEvent -> handleCheatCodeDialogClosure(panel));
+        }, ClickEvent.getType());
 
         horizontalPanel.add(cheatCodeLink);
 
@@ -514,17 +532,13 @@ public class SuperSpell implements EntryPoint, IResetable
         final Hyperlink cheatCodeLink = new Hyperlink();
         cheatCodeLink.setText("settings");
         cheatCodeLink.addStyleName("underline");
-        cheatCodeLink.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent clickEvent)
-            {
-                final SettingsPopupPanel panel = new SettingsPopupPanel();
-                panel.setPopupPosition(
-                        linksInUpperRightCornerPanel.getAbsoluteLeft() - panel.getOffsetWidth() + linksInUpperRightCornerPanel.getOffsetWidth(),
-                        linksInUpperRightCornerPanel.getAbsoluteTop());
-                panel.show();
-            }
-        });
+        cheatCodeLink.addDomHandler(clickEvent -> {
+            final SettingsPopupPanel panel = new SettingsPopupPanel();
+            panel.setPopupPosition(
+                    linksInUpperRightCornerPanel.getAbsoluteLeft() - panel.getOffsetWidth() + linksInUpperRightCornerPanel.getOffsetWidth(),
+                    linksInUpperRightCornerPanel.getAbsoluteTop());
+            panel.show();
+        }, ClickEvent.getType());
 
         return cheatCodeLink;
     }
@@ -534,13 +548,7 @@ public class SuperSpell implements EntryPoint, IResetable
         final Hyperlink cheatCodeLink = new Hyperlink();
         cheatCodeLink.setText("start over");
         cheatCodeLink.addStyleName("underline");
-        cheatCodeLink.addClickHandler(new ClickHandler()
-        {
-            public void onClick(ClickEvent clickEvent)
-            {
-                init();
-            }
-        });
+        cheatCodeLink.addDomHandler(clickEvent -> init(), ClickEvent.getType());
 
         return cheatCodeLink;
     }
@@ -548,7 +556,7 @@ public class SuperSpell implements EntryPoint, IResetable
     private void silenceSound()
     {
         setSoundEffectSet(SoundPaletteChoice.NONE);
-//        setInReadImmediatelyMode(false);
+        setInReadImmediatelyMode(false);
     }
 
     private void toggleUnlockMusic()
@@ -575,16 +583,16 @@ public class SuperSpell implements EntryPoint, IResetable
         return Settings.getInReadImmediatelyMode();
     }
 
-//    public void toggleInReadImmediatelyMode()
-//    {
-//        Boolean newSetting = !Settings.getInReadImmediatelyMode();
-//        setInReadImmediatelyMode(newSetting);
-//    }
+    public void toggleInReadImmediatelyMode()
+    {
+        Boolean newSetting = !Settings.getInReadImmediatelyMode();
+        setInReadImmediatelyMode(newSetting);
+    }
 
-//    public static void setInReadImmediatelyMode(Boolean newSetting)
-//    {
-//        Settings.setInReadImmediatelyMode(newSetting);
-//    }
+    public static void setInReadImmediatelyMode(Boolean newSetting)
+    {
+        Settings.setInReadImmediatelyMode(newSetting);
+    }
 
     public static Boolean isUsingPeterMath()
     {

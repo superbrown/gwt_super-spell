@@ -5,9 +5,9 @@ import com.superbrown.superSpell.gwtApp.shared.mathFacts.MathFact;
 
 public class AdditionMathFact extends MathFact
 {
-    public AdditionMathFact(MathFactListForAParticularPrimaryOperand parentGroup, int primaryOperand, int secondaryOperand, int timeLimit)
+    public AdditionMathFact(MathFactListForAParticularPrimaryOperand parentGroup, int primaryOperand, int secondaryOperand)
     {
-        super(parentGroup, primaryOperand, secondaryOperand, timeLimit);
+        super(parentGroup, primaryOperand, secondaryOperand, null);
     }
 
     public AdditionMathFact()

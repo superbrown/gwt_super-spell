@@ -80,6 +80,6 @@ public class SuperSpellServiceImpl extends RemoteServiceServlet implements ISupe
 
     public void setMathFactTimeLimit(Integer duration)
     {
-        testableListLibrarian.setMathFactTimeLimit(duration);
+        // No-op: time limit is now handled entirely client-side
     }
 }
