@@ -43,8 +43,8 @@ public abstract class TestQuestionPanel extends VerticalPanel
         {
             "No.",
             "Incorrect.",
-            "You knucklehead!",
-            "You goof-ball!",
+//            "You knucklehead!",
+//            "You goof-ball!",
             "Really??",
             "You think so??",
             "I thought you knew this!",
