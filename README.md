@@ -54,8 +54,8 @@ The application supports direct access to specific modules:
 The project has been modernized with:
 - ✅ Maven build system (upgraded from Ant)
 - ✅ Java 17 (upgraded from Java 1.7)
-- ✅ GWT 2.10.0 (upgraded from ~2010 version)
-- ✅ App Engine Java 11 Standard Environment
+- ✅ GWT 2.13.1 (upgraded from ~2010 version)
+- ✅ App Engine Java 17 Standard Environment
 - ✅ Web Speech API for text-to-speech (replaced deprecated Google Translate TTS)
 - ✅ HTTPS support for MIDI playback
 - ✅ Modern cookie handling with SameSite attributes

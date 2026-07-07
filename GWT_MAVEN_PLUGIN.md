@@ -10,7 +10,7 @@ The GWT Maven Plugin has been added to compile your Java code into optimized Jav
 - `gwt-dev` - GWT compiler and development tools
 
 ### Plugin Configuration
-- **GWT Maven Plugin** (net.ltgt.gwt.maven:gwt-maven-plugin:1.0.1)
+- **GWT Maven Plugin** (net.ltgt.gwt.maven:gwt-maven-plugin:1.1.0)
   - Compiles Java → JavaScript
   - Generates optimized, obfuscated JavaScript for production
   - Creates browser-specific permutations

@@ -208,8 +208,8 @@ The project served as a learning platform for various web technologies:
 
 - **Platform:** Google App Engine
 - **Build System:** Maven (modernized from original Ant build)
-- **GWT Version:** 2.10.0 (upgraded from original version)
-- **Java Version:** 17 (target), 11 (GWT compilation)
+- **GWT Version:** 2.13.1 (upgraded from original version)
+- **Java Version:** 17 (target and GWT compilation)
 
 ## Success Metrics
 

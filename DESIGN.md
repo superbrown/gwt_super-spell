@@ -303,11 +303,11 @@ See [MATH_DIRECT_ACCESS.md](MATH_DIRECT_ACCESS.md) for details.
 
 | Component | Technology | Version |
 |-----------|------------|---------|
-| UI Framework | GWT | 2.10.0 |
-| Language | Java | 17 (target), 11 (GWT compile) |
+| UI Framework | GWT | 2.13.1 |
+| Language | Java | 17 (target and GWT compile) |
 | Build | Maven | 3.x |
 | Dev Server | Jetty | 10.0.20 |
-| Production | Google App Engine | Java 11 Standard |
+| Production | Google App Engine | Java 17 Standard |
 | Drag & Drop | gwt-dnd | 3.3.4 |
 | Servlet API | Jakarta EE | 5.0 |
 
