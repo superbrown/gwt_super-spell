@@ -40,8 +40,12 @@ nbdist/
 # GWT
 **/war/WEB-INF/classes/
 **/war/WEB-INF/deploy/
+**/war/gwtapp/
 gwt-unitCache/
 .gwt/
+
+# gcloud
+.gcloudignore
 
 # Logs
 *.log
