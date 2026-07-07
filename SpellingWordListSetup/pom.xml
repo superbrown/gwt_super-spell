@@ -22,6 +22,7 @@
             <groupId>com.superbrown.superspell</groupId>
             <artifactId>gwt-app</artifactId>
             <version>1.0.0</version>
+            <classifier>classes</classifier>
         </dependency>
 
         <!-- GWT User -->
