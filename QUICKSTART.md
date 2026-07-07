@@ -97,12 +97,22 @@ The build shows some warnings but they don't affect functionality:
 
 ## Running the Application
 
-To run the GWT application in development mode, you'll need to:
+The Jetty Maven Plugin is already configured in `gwtapp/pom.xml` for local development:
 
-1. Add the GWT Maven Plugin to `gwtapp/pom.xml`
-2. Run: `mvn gwt:run -pl gwtapp`
+```bash
+cd gwtapp
+mvn jetty:run
+```
 
-Or deploy the WAR file to a servlet container like Tomcat or Jetty.
+Then open http://localhost:8080/. There is no `gwt:run` goal — the GWT Maven
+Plugin's available goals are `compile`, `codeserver`, `devmode`, `test`, etc.,
+not `run`; serving the app is Jetty's job, not the GWT plugin's.
+
+For hot-reload development (Super Dev Mode), see the "GWT Super Dev Mode"
+section in [LOCAL_DEPLOYMENT.md](LOCAL_DEPLOYMENT.md).
+
+Alternatively, deploy the built WAR file (`gwtapp/target/gwt-app-1.0.0.war`)
+to a servlet container like Tomcat or Jetty.
 
 ## Need Help?
 
