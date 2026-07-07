@@ -18,13 +18,14 @@ This project has been migrated from Ant + IntelliJ IDEA build system to Maven.
    - Added modern Servlet API 4.0.1
 
 3. **Updated Java Version**
-   - Changed from Java 1.7 to Java 11 (LTS)
-   - Java 11 is a good balance between modern features and compatibility
+   - Changed from Java 1.7 to Java 11 (LTS) at the time of this migration
+   - The project has since been upgraded further to Java 17 (see README.md); the
+     sections below are kept as a historical record of the original Ant → Maven move
 
 ## Building the Project
 
 ### Prerequisites
-- Java 11 or higher
+- Java 17 or higher (the project now targets 17; see note above)
 - Maven 3.6 or higher
 
 ### Build Commands
@@ -62,9 +63,9 @@ gwt_super-spell/
 2. If there are compilation errors, they may be due to:
    - Missing classes in the gwtapp module
    - API changes in GWT 2.10.0
-   - Java 11 compatibility issues
+   - Java version compatibility issues
 
-3. Consider updating to Java 17 (latest LTS) in the future
+3. ~~Consider updating to Java 17 (latest LTS) in the future~~ — done; the project now targets Java 17
 
 ## Old Build Files
 

@@ -304,7 +304,7 @@ The following critical issues have been resolved:
 ✅ **Text-to-Speech** - Implemented Web Speech API (no external dependencies)
 ✅ **MIDI Playback** - Fixed HTTPS mixed content issue
 ✅ **Cookie Persistence** - Added SameSite and Secure attributes
-✅ **App Engine Deployment** - Migrated to Java 11 Standard Environment
+✅ **App Engine Deployment** - Migrated to Java 17 Standard Environment
 ✅ **Legacy Code Cleanup** - Removed browser plugin dependencies
 
 The app is now fully functional and ready for modern browsers!

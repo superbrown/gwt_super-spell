@@ -12,7 +12,7 @@ Your GWT application has been successfully modernized with Maven!
 - **Setup Utilities**: `/SpellingWordListSetup/pom.xml` - Utility tools
 
 ### 2. Updated Dependencies
-- **GWT**: Upgraded to 2.10.0 (latest stable, from ~2010 version)
+- **GWT**: Upgraded to 2.13.1 (latest stable, from ~2010 version)
 - **gwt-dnd**: Upgraded to 3.3.4 (from 3.0.1)
 - **Servlet API**: Added modern 4.0.1
 - **Removed**: Obsolete App Engine SDK 1.3.8
@@ -20,7 +20,7 @@ Your GWT application has been successfully modernized with Maven!
 ### 3. Modernized Java
 - **Java Version**: Upgraded from 1.7 to **17** (latest LTS)
 - Maven compiler targets Java 17 bytecode
-- GWT compiler uses Java 11 compatibility (GWT 2.10.0 limitation)
+- GWT compiler now uses Java 17 source level (GWT 2.13.1 supports 12-17 language features; older 2.10.0 was capped at 11)
 - All code compiles successfully
 
 ## Build Commands
@@ -86,7 +86,7 @@ gwt_super-spell/
 
 **Java Version:** 17 (LTS)
 - Maven compiles to Java 17 bytecode
-- GWT compiles JavaScript using Java 11 compatibility (GWT 2.10.0 limitation)
+- GWT compiles JavaScript using Java 17 source level (GWT 2.13.1)
 
 ## Warnings (Non-Critical)
 
@@ -108,4 +108,4 @@ Or deploy the WAR file to a servlet container like Tomcat or Jetty.
 
 - Maven documentation: https://maven.apache.org/guides/
 - GWT documentation: http://www.gwtproject.org/doc/latest/DevGuide.html
-- GWT 2.10.0 release notes: http://www.gwtproject.org/release-notes.html
+- GWT release notes: http://www.gwtproject.org/release-notes.html

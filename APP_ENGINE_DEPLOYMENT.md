@@ -70,13 +70,17 @@ gcloud config set account mike.public84@gmail.com 2>&1
 
 ### Deployment Steps
 
+The `appengine-maven-plugin` is only declared in `gwtapp/pom.xml`, so both commands
+below must be run **from inside the `gwtapp` directory** — running them from the
+project root fails with `No plugin found for prefix 'appengine'`.
+
 1. **Build the application**
    ```bash
    cd gwtapp
    mvn clean package
    ```
 
-2. **Deploy to App Engine**
+2. **Deploy to App Engine** (still inside `gwtapp`)
    ```bash
    mvn appengine:deploy
    ```
@@ -84,6 +88,11 @@ gcloud config set account mike.public84@gmail.com 2>&1
    Or deploy using the gcloud CLI directly:
    ```bash
    gcloud app deploy target/gwt-app-1.0.0.war
+   ```
+
+   To run either step from the project root instead, target the module explicitly:
+   ```bash
+   mvn -pl gwtapp appengine:deploy
    ```
 
 3. **View the application**
@@ -99,6 +108,7 @@ gcloud config set account mike.public84@gmail.com 2>&1
 
 ### Troubleshooting
 
+- **"No plugin found for prefix 'appengine'"** — You ran `mvn appengine:deploy` from the project root. The plugin is only declared in `gwtapp/pom.xml`; `cd gwtapp` first, or run `mvn -pl gwtapp appengine:deploy` from the root.
 - **"Parameter 'deploy' is unknown"** — The `<configuration>` block in `pom.xml` is using v1 plugin syntax. In v2, properties like `promote` and `stopPreviousVersion` must be direct children of `<configuration>`, not nested under `<deploy>`.
 - **`ManagedSdkVerificationException` / exit code 1** — Usually an authentication or permissions issue. Run `gcloud auth login` and verify your account has the App Engine Admin role (see above).
 - **Build failures** — Ensure Java 17 is being used for compilation (`java -version`).

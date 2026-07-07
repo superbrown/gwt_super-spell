@@ -97,7 +97,7 @@ This document identifies features that likely no longer work due to deprecated s
 
 ## 4. Google App Engine Deployment - MEDIUM PRIORITY
 
-**Status:** ✅ COMPLETED - Migrated to App Engine Java 11 Standard
+**Status:** ✅ COMPLETED - Migrated to App Engine Java 17 Standard
 
 **Issue:**
 - `appengine-web.xml` uses old App Engine Java 7 format
@@ -111,14 +111,14 @@ This document identifies features that likely no longer work due to deprecated s
 - Potential security vulnerabilities in old runtime
 
 **Resolution:**
-✅ **Completed** - Migrated to App Engine Java 11 Standard Environment
+✅ **Completed** - Migrated to App Engine Java 17 Standard Environment
 
 **Implementation Details:**
-- Updated `appengine-web.xml` to use Java 11 runtime
+- Updated `appengine-web.xml` to use Java 17 runtime
 - Removed hardcoded application ID and version (now managed via gcloud CLI)
 - Added modern `app.yaml` configuration file
 - Updated Maven plugins for modern App Engine deployment
-- Implemented automatic scaling (0-10 instances)
+- Implemented automatic scaling (0-1 instances, capped to stay within the free daily instance-hour pool)
 - Added security headers (X-Content-Type-Options, X-Frame-Options, X-XSS-Protection)
 - Optimized static file caching for GWT application structure
 - Enabled sessions for user preferences (cookies)
@@ -127,7 +127,8 @@ This document identifies features that likely no longer work due to deprecated s
 
 **Deployment Commands:**
 ```bash
-# Build and deploy
+# Run from inside gwtapp/ — the appengine-maven-plugin is only declared there
+cd gwtapp
 mvn clean compile gwt:compile package
 mvn appengine:deploy
 
@@ -251,33 +252,20 @@ gcloud app deploy target/gwt-app-1.0.0.war
 
 ## 8. GWT Version Compatibility - MEDIUM PRIORITY
 
-**Status:** ⚠️ Using GWT 2.10.0 (latest, but limited Java support)
+**Status:** ✅ RESOLVED - Upgraded to GWT 2.13.1, client `sourceLevel` raised to 17
 
-**Issue:**
-- GWT 2.10.0 only supports Java 11 source level
-- Project is configured for Java 17
-- Some Java 17 features won't work in GWT client code
+**Issue (historical):**
+- The project was previously pinned to GWT 2.10.0, whose dev-tool `sourceLevel` topped out at 11
+- Project is configured for Java 17 server-side
+- Java 17-only language features (records, pattern matching, switch expressions) couldn't be used in GWT client code
 
-**Impact:**
-- Potential compilation issues
-- Can't use newer Java features in client code
-- Limited by GWT's Java support
+**Resolution:**
+- GWT 2.12.0 (Oct 2024) added dev-tool support for Java 12–17 language features
+- Upgraded `gwt.version` from 2.12.1 to the current latest, 2.13.1
+- Raised `gwtapp/pom.xml`'s `<sourceLevel>` from `11` to `17`
+- Verified with `mvn clean package` and a local `jetty:run` smoke test — client and server now both target Java 17
 
-**Suggested Approaches:**
-
-### Option A: Accept GWT Limitations
-- Keep Java 17 for server code
-- Use Java 11 features only in client code
-- **Pros:** Simple, works with current GWT
-- **Cons:** Can't use modern Java features in UI
-
-### Option B: Migrate to Modern Framework
-- Consider migrating to React, Vue, or Angular
-- **Pros:** Modern tooling, better browser support, active community
-- **Cons:** Complete rewrite, significant effort
-- **Implementation:** Gradual migration, start with new features
-
-**Recommendation:** Option A for now, consider Option B for long-term modernization.
+**Note:** GWT itself (last release 2.13.1, June 2026) is far behind modern SPA frameworks in ecosystem activity. If the client code needs ongoing active development, migrating to React/Vue/Angular remains worth considering long-term — but is no longer required just to unblock modern Java syntax in client code.
 
 ---
 
@@ -308,7 +296,7 @@ gcloud app deploy target/gwt-app-1.0.0.war
 
 ### High Priority (Fix Soon)
 3. ✅ **Mixed Content (HTTP/HTTPS)** - COMPLETED (HTTPS updates)
-4. ✅ **Google App Engine Deployment** - COMPLETED (Java 11 Standard)
+4. ✅ **Google App Engine Deployment** - COMPLETED (Java 17 Standard)
 
 ### Medium Priority (Plan to Fix)
 5. ✅ **Cookie SameSite** - COMPLETED (Modern browser compatibility)
@@ -330,7 +318,7 @@ gcloud app deploy target/gwt-app-1.0.0.war
 4. Add SameSite attribute to cookies
 
 ### Phase 2: Platform Updates (3-5 days)
-1. Update App Engine configuration to Java 11
+1. Update App Engine configuration to Java 17
 2. Test deployment on modern App Engine
 3. Update documentation
 
@@ -353,7 +341,7 @@ After implementing fixes, test:
 - [ ] MIDI/MP3 playback works in all browsers
 - [x] No mixed content warnings in browser console
 - [x] Cookies persist across sessions (with SameSite support)
-- [ ] App deploys successfully to App Engine (updated to Java 11)
+- [ ] App deploys successfully to App Engine (updated to Java 17)
 - [ ] All spelling/vocabulary/math features work
 - [ ] Sound effects play correctly
 - [ ] Settings save and load properly

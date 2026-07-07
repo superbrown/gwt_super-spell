@@ -81,7 +81,7 @@
                     <classpathScope>compile</classpathScope>
                     <style>OBFUSCATED</style>
                     <logLevel>INFO</logLevel>
-                    <sourceLevel>11</sourceLevel>
+                    <sourceLevel>17</sourceLevel>
                 </configuration>
                 <executions>
                     <execution>
@@ -100,6 +100,7 @@
                 <configuration>
                     <warSourceDirectory>war</warSourceDirectory>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <attachClasses>true</attachClasses>
                 </configuration>
             </plugin>
             
