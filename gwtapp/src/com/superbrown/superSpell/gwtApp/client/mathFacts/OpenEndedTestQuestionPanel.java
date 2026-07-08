@@ -52,7 +52,7 @@ public class OpenEndedTestQuestionPanel extends TestQuestionPanel
 
         label = new Label(mathFact.getTestQuestion());
         label.addStyleName("bold bottomMargin fontSize150");
-        label.setWidth("250");
+        label.setWidth("250px");
         label.setWordWrap(true);
         horizontalPanel.add(label);
 

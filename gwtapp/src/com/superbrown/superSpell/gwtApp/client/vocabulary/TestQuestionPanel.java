@@ -32,7 +32,7 @@ public abstract class TestQuestionPanel extends com.superbrown.superSpell.gwtApp
         {
             label = new Label(testQuestionLine);
             label.addStyleName("bold");
-            label.setWidth("300");
+            label.setWidth("300px");
             label.setWordWrap(true);
             panel.add(label);
         }
