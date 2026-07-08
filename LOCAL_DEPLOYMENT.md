@@ -14,7 +14,6 @@ This guide shows you how to run the Super-Spell application on your local machin
 From the project root directory:
 
 ```bash
-cd /Users/P3221839/Projects/gwt_super-spell
 mvn clean package -pl gwtapp
 ```
 
@@ -226,10 +225,12 @@ When the app loads, you should see:
 Click "enter cheat code" in the upper right and try:
 - `pink` - Change to pink chalkboard
 - `blue` - Change to blue chalkboard
-- ✅ `music` - Unlock music player (MIDI playback now works!)
+- ✅ `mmusic` - Unlock music player (MIDI playback now works!)
 - `mastermind` - Play Mastermind game
 
-See `gwtapp/war/cheats/index.html` for full list of cheat codes.
+See [USER_GUIDE.md](USER_GUIDE.md) for the full, verified list of cheat codes —
+`gwtapp/war/cheats/index.html` is a static in-app reference page that's missing a few
+(including the music-unlock and math-timer codes).
 
 ### Test Fixed Features
 
@@ -239,8 +240,8 @@ See `gwtapp/war/cheats/index.html` for full list of cheat codes.
 - Works in Chrome, Firefox, Safari, Edge
 
 ✅ **MIDI Music Playback**
-- Complete a test to unlock music
-- Enter cheat code `music` to access music player
+- Get every item in a list right on the first try to unlock music automatically
+- Or enter cheat code `mmusic` to toggle the music player open/closed anytime
 - MIDI files now play correctly (fixed HTTPS issue)
 - 100+ songs available in `gwtapp/war/midiFiles/`
 

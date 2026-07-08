@@ -221,16 +221,22 @@ gcloud app deploy target/gwt-app-1.0.0.war
 
 ## 7. Dictionary.com Screen Scraping - LOW PRIORITY
 
-**Status:** ❓ Unknown if still used
+**Status:** ⚠️ Code still present, likely non-functional; not part of the deployed app
 
 **Issue:**
-- README mentions "screen scraping dictionary.com to get phonetic spellings"
-- No code found in current search, may have been removed
-- Screen scraping is fragile and may break with website changes
+- The scraping code exists in `SpellingWordListSetup/src/.../Util.java` (`getLinesFromURL`,
+  used at `.../browse/` + word), targeting `http://dictionary.reference.com/browse/{word}`
+- `SpellingWordListSetup` is a standalone offline command-line utility for generating word
+  list content — it is **not** invoked by the deployed web app (`gwtapp`) at runtime
+- The URL is plain HTTP and targets `dictionary.reference.com`, a long-deprecated legacy
+  domain that redirected to dictionary.com years ago — this scraper is very likely broken
+  today, though it hasn't been executed to confirm
+- Screen scraping is inherently fragile and may break further with website changes
 
 **Impact:**
-- If still used, phonetic spellings may not load
-- Potential legal/ToS issues with scraping
+- No impact on the live app — this only matters if someone needs to regenerate/add
+  phonetic spellings for new word list entries using this offline tool
+- Potential legal/ToS issues with scraping if it were still relied upon
 
 **Suggested Approaches:**
 
@@ -246,7 +252,11 @@ gcloud app deploy target/gwt-app-1.0.0.war
 - **Cons:** Can't handle new words dynamically
 - **Implementation:** One-time data generation script
 
-**Recommendation:** Verify if this feature is still in use. If so, use Option B (pre-generate data) for simplicity.
+**Recommendation:** Low priority — it's an offline utility, not a live app dependency. If the
+scraper is ever needed again, Option B is effectively already how the app operates today
+(phonetic spellings are pre-generated, one-time, and committed directly into the word list
+`.txt` files rather than fetched at runtime); Option A only matters if `dictionary.reference.com`
+is confirmed dead and someone needs to regenerate spellings for new words.
 
 ---
 
@@ -300,11 +310,11 @@ gcloud app deploy target/gwt-app-1.0.0.war
 
 ### Medium Priority (Plan to Fix)
 5. ✅ **Cookie SameSite** - COMPLETED (Modern browser compatibility)
-6. ⬜ **GWT Version Compatibility** - Long-term maintainability
+6. ✅ **GWT Version Compatibility** - RESOLVED (upgraded to GWT 2.13.1, sourceLevel 17)
 
 ### Low Priority (Nice to Have)
 7. ✅ **Browser Plugin Dependencies** - COMPLETED (Legacy code cleanup)
-8. ⬜ **Dictionary.com Scraping** - Verify if needed
+8. ⚠️ **Dictionary.com Scraping** - Code present but unused by the live app; likely non-functional
 9. ✅ **Ant Build Files** - COMPLETED
 
 ---
@@ -341,7 +351,7 @@ After implementing fixes, test:
 - [ ] MIDI/MP3 playback works in all browsers
 - [x] No mixed content warnings in browser console
 - [x] Cookies persist across sessions (with SameSite support)
-- [ ] App deploys successfully to App Engine (updated to Java 17)
+- [x] App deploys successfully to App Engine (updated to Java 17)
 - [ ] All spelling/vocabulary/math features work
 - [ ] Sound effects play correctly
 - [ ] Settings save and load properly

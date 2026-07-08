@@ -30,7 +30,7 @@ This project has been migrated from Ant + IntelliJ IDEA build system to Maven.
 
 ### Build Commands
 
-From the root directory (`/Users/P3221839/Projects/gwt_super-spell/`):
+From the project root directory:
 
 ```bash
 # Build all modules

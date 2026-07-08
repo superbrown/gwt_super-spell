@@ -34,9 +34,12 @@ The application serves as an interactive learning tool that:
   - Social Studies units
   - Science chapters
   - Word Master lessons (comprehensive vocabulary building)
-- **Question Types:**
-  - Multiple choice (select correct definition)
-  - Open-ended (type the definition)
+- **Question Type:** Multiple choice only (select the correct definition) — unlike
+  Spelling, a correct pick never switches away from multiple choice; two correct
+  picks are required to complete a word. (A separate category, "7th Grade: Spelling
+  of Vocabulary Words," tests *spelling* vocabulary words rather than definitions,
+  and behaves like the Spelling module — open-ended first, falling back to multiple
+  choice on a miss.)
 - **Content:** Each word includes definition and usage context
 
 ### 3. Math Facts Module

@@ -224,8 +224,8 @@ TestAdministratorPanel
 - Content: Word/definition pairs by grade and subject
 - Storage: Java classes in `server/vocabulary/vocabularyLists/`
 - Features:
-  - Multiple choice (select definition)
-  - Open-ended (type definition)
+  - Multiple choice only (select definition) — `VocabularyWordTestingMetric` never
+    switches to open-ended, unlike Spelling (see Testing Behavior above)
   - Social Studies, Science, Word Master lessons
 
 ### Math Facts
@@ -320,8 +320,8 @@ mvn clean package
 # Run locally
 cd gwtapp && mvn jetty:run
 
-# Deploy to App Engine
-mvn appengine:deploy
+# Deploy to App Engine (appengine-maven-plugin is only declared in gwtapp/pom.xml)
+cd gwtapp && mvn appengine:deploy
 ```
 
 ## Key Files

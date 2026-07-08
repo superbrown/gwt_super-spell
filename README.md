@@ -17,6 +17,7 @@ https://play.google.com/store/apps/details?id=com.superbrown.vocabBlaster
 
 ## Documentation
 
+- **[USER_GUIDE.md](USER_GUIDE.md)** - How to actually use the app: navigation, settings, and cheat codes
 - **[QUICKSTART.md](QUICKSTART.md)** - Quick start guide for building and running the project
 - **[LOCAL_DEPLOYMENT.md](LOCAL_DEPLOYMENT.md)** - Detailed instructions for local development and testing
 - **[APPLICATION_DESCRIPTION.md](APPLICATION_DESCRIPTION.md)** - Comprehensive overview of features and architecture

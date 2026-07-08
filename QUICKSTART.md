@@ -26,7 +26,7 @@ Your GWT application has been successfully modernized with Maven!
 ## Build Commands
 
 ```bash
-# From project root: /Users/P3221839/Projects/gwt_super-spell/
+# From the project root
 
 # Build everything (Java only)
 mvn clean install

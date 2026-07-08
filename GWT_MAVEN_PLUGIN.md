@@ -24,8 +24,7 @@ The GWT Maven Plugin has been added to compile your Java code into optimized Jav
 cd gwtapp
 mvn gwt:compile
 
-# Or from root directory
-cd /Users/P3221839/Projects/gwt_super-spell
+# Or from the project root
 mvn gwt:compile -pl gwtapp
 ```
 
@@ -94,7 +93,7 @@ mvn jetty:run
 
 ### Compilation Settings
 - **Style**: OBFUSCATED (minified for production)
-- **Source Level**: Java 11
+- **Source Level**: Java 17
 - **Log Level**: INFO
 
 ### Change Compilation Style
@@ -183,10 +182,11 @@ mvn gwt:compile
 
 ## Next Steps
 
-1. **Add Jetty Plugin** for easy local testing
-2. **Configure Super Dev Mode** for hot reload
-3. **Optimize GWT module** for faster compilation
-4. **Add source maps** for debugging
+The Jetty plugin and Super Dev Mode described above are already configured and working.
+Remaining ideas for further improvement:
+
+1. **Optimize GWT module** for faster compilation
+2. **Add source maps** for debugging
 
 ## Resources
 
